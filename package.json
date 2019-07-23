@@ -1,0 +1,40 @@
+{
+  "name": "multi-commercetools",
+  "version": "0.1.0",
+  "description": "Abstraction layer for working with multiple Commercetools projects in parallel.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DerKobe/multi-commercetools.git"
+  },
+  "keywords": [
+    "commercetools"
+  ],
+  "author": "Philip Claren <philip@claren.io>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DerKobe/multi-commercetools/issues"
+  },
+  "homepage": "https://github.com/DerKobe/multi-commercetools#readme",
+  "devDependencies": {
+    "@types/node": "^12.0.10",
+    "backend-tslint-rules": "1.14.0",
+    "prettier": "^1.18.2",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.2"
+  },
+  "dependencies": {
+    "@commercetools/api-request-builder": "^5.1.0",
+    "@commercetools/sdk-client": "^2.1.0",
+    "@commercetools/sdk-middleware-auth": "^5.1.0",
+    "@commercetools/sdk-middleware-http": "^5.2.0",
+    "@commercetools/sdk-middleware-queue": "^2.1.0",
+    "isomorphic-fetch": "^2.2.1"
+  }
+}
