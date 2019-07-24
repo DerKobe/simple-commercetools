@@ -23,6 +23,20 @@ export class CustomObjects extends BaseModule {
     );
   }
 
+  public async fetchById(id: string): Promise<CustomObject> {
+    const fetchRequest = {
+      uri: this.request.customObjects.byId(id).build(),
+      method: 'GET',
+      headers: this.headers,
+    };
+
+    return (
+      this.client
+        .execute(fetchRequest)
+        .then(response => response.body)
+    );
+  }
+
   public async fetchByKeyAndContainer(key: string, container: string): Promise<CustomObject> {
     const condition = `key="${key}" AND container="${container}"`;
     return (await this.fetchAll(1, 1, condition)).results[0] as CustomObject;
