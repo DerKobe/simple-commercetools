@@ -9,18 +9,19 @@ interface CommercetoolsConfig {
     apiHost: string;
 }
 export declare class Commercetools {
-    readonly carts: Promise<any>;
-    readonly categories: Promise<any>;
-    readonly channels: Promise<any>;
-    readonly customObjects: Promise<any>;
-    readonly extensions: Promise<any>;
-    readonly inventoryEntries: Promise<any>;
-    readonly orders: Promise<any>;
-    readonly productProjections: Promise<any>;
-    readonly products: Promise<any>;
-    readonly productTypes: Promise<any>;
-    readonly subscriptions: Promise<any>;
-    readonly taxCategories: Promise<any>;
+    readonly carts: any;
+    readonly categories: any;
+    readonly channels: any;
+    readonly customObjects: any;
+    readonly extensions: any;
+    readonly inventoryEntries: any;
+    readonly orders: any;
+    readonly productProjections: any;
+    readonly products: any;
+    readonly productTypes: any;
+    readonly subscriptions: any;
+    readonly taxCategories: any;
+    readonly projectKey: string;
     readonly client: any;
     readonly request: any;
     locale: string | undefined;

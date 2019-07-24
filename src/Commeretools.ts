@@ -30,6 +30,7 @@ export class Commercetools {
   public get subscriptions() { return this.initModule('Subscriptions') }
   public get taxCategories() { return this.initModule('TaxCategories') }
 
+  public get projectKey() { return this.config.projectKey; }
   public get client() { return this._client; }
   public get request() { return this._request; }
 
@@ -79,14 +80,15 @@ export class Commercetools {
     this.locale = locale;
   }
 
-  private async initModule(moduleName) {
-    await this.initClient();
+  private initModule(moduleName) {
+    if (!this._client) {
+      throw new Error('Client is not initialized! Run "await initClient()" first.');
+    }
 
     if (!this[`module${moduleName}`]) {
-      console.log(moduleName, modules);
       this[`module${moduleName}`] = new modules[moduleName](this);
     }
 
-    return this[`module${moduleName}`]
+    return this[`module${moduleName}`];
   }
 }
