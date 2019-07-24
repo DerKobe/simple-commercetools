@@ -4,7 +4,7 @@ import { createClient } from '@commercetools/sdk-client';
 import { createAuthMiddlewareForClientCredentialsFlow } from '@commercetools/sdk-middleware-auth';
 import { createHttpMiddleware } from '@commercetools/sdk-middleware-http';
 import { createQueueMiddleware } from '@commercetools/sdk-middleware-queue';
-import * as modules from './Modules';
+import * as modules from './Modules/index';
 
 interface CommercetoolsConfig {
   projectKey: string,
