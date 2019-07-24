@@ -5,4 +5,5 @@ export declare class CustomObjects extends BaseModule {
     fetchById(id: string): Promise<CustomObject>;
     fetchByKeyAndContainer(key: string, container: string): Promise<CustomObject>;
     save(customObjectDraft: CustomObjectDraft): Promise<CustomObject>;
+    deleteById(id: string): Promise<void>;
 }
