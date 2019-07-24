@@ -8,7 +8,7 @@ export class Orders extends CommonModule {
     let uri = this.request[this.entityType as string];
 
     if (page) { uri = uri.page(page); }
-    if (perPage) { uri = uri.page(perPage); }
+    if (perPage) { uri = uri.perPage(perPage); }
     if (condition) { uri = uri.where(condition); }
     if (expansions) { expansions.forEach(expansion => uri = uri.expand(expansion)); }
     if (sort) { uri = uri.parse({ sort }); }
