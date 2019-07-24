@@ -1,7 +1,7 @@
 {
-  "name": "multi-commercetools",
+  "name": "simple-commercetools",
   "version": "0.1.0",
-  "description": "Abstraction layer for working with multiple Commercetools projects in parallel.",
+  "description": "Abstraction layer for working with Commercetools projects in a simpler manner.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -17,9 +17,9 @@
   "author": "Philip Claren <philip@claren.io>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DerKobe/multi-commercetools/issues"
+    "url": "https://github.com/DerKobe/simple-commercetools/issues"
   },
-  "homepage": "https://github.com/DerKobe/multi-commercetools#readme",
+  "homepage": "https://github.com/DerKobe/simple-commercetools#readme",
   "devDependencies": {
     "@types/node": "^12.0.10",
     "backend-tslint-rules": "1.14.0",
