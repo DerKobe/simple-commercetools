@@ -1,5 +1,5 @@
-import { CommonModule } from './Modules'
-import { CustomType, CustomTypeDraft, UpdateAction } from './types'
+import { CommonModule } from './CommonModule';
+import { CustomType, CustomTypeDraft, UpdateAction } from '../types'
 
 export class CustomTypes extends CommonModule {
   protected entityType = 'types';

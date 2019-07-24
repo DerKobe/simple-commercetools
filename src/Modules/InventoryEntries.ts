@@ -1,5 +1,5 @@
-import { CommonModule } from './Modules'
-import { InventoryEntry, PagedQueryResult } from './types';
+import { CommonModule } from './CommonModule';
+import { InventoryEntry, PagedQueryResult } from '../types';
 
 export class InventoryEntries extends CommonModule {
   protected entityType = 'inventory';

@@ -1,22 +1,10 @@
+import 'isomorphic-fetch';
 import { createRequestBuilder } from '@commercetools/api-request-builder';
 import { createClient } from '@commercetools/sdk-client';
 import { createAuthMiddlewareForClientCredentialsFlow } from '@commercetools/sdk-middleware-auth';
 import { createHttpMiddleware } from '@commercetools/sdk-middleware-http';
 import { createQueueMiddleware } from '@commercetools/sdk-middleware-queue';
-import 'isomorphic-fetch';
-import { Carts } from "./Carts";
-import { Categories } from "./Categories";
-import { Channels } from './Channels';
-import { CustomObjects } from './CustomObjects';
-import { CustomTypes } from "./CustomTypes";
-import { Extensions } from "./Extensions";
-import { InventoryEntries } from './InventoryEntries';
-import { Orders } from "./Orders";
-import { ProductProjections } from "./ProductProjections";
-import { Products } from "./Products";
-import { ProductTypes } from "./ProductTypes";
-import { Subscriptions } from "./Subscriptions";
-import { TaxCategories } from "./TaxCategories";
+import * as modules from './Modules';
 
 interface CommercetoolsConfig {
   projectKey: string,
@@ -52,19 +40,19 @@ export class Commercetools {
   private _client;
   private _request;
 
-  private moduleCarts?: Carts;
-  private moduleCategories?: Categories;
-  private moduleChannels?: Channels;
-  private moduleCustomObjects?: CustomObjects;
-  private moduleCustomTypes?: CustomTypes;
-  private moduleExtensions?: Extensions;
-  private moduleInventoryEntries?: InventoryEntries;
-  private moduleOrders?: Orders;
-  private moduleProductProjections?: ProductProjections;
-  private moduleProducts?: Products;
-  private moduleProductTypes?: ProductTypes;
-  private moduleSubscriptions?: Subscriptions;
-  private moduleTaxCategories?: TaxCategories;
+  private moduleCarts?: modules.Carts;
+  private moduleCategories?: modules.Categories;
+  private moduleChannels?: modules.Channels;
+  private moduleCustomObjects?: modules.CustomObjects;
+  private moduleCustomTypes?: modules.CustomTypes;
+  private moduleExtensions?: modules.Extensions;
+  private moduleInventoryEntries?: modules.InventoryEntries;
+  private moduleOrders?: modules.Orders;
+  private moduleProductProjections?: modules.ProductProjections;
+  private moduleProducts?: modules.Products;
+  private moduleProductTypes?: modules.ProductTypes;
+  private moduleSubscriptions?: modules.Subscriptions;
+  private moduleTaxCategories?: modules.TaxCategories;
 
   constructor(config: CommercetoolsConfig) {
     this.config = config;
@@ -95,7 +83,7 @@ export class Commercetools {
     await this.initClient();
 
     if (!this[`module${moduleName}`]) {
-      this[`module${moduleName}`] = new global[this[moduleName]](this);
+      this[`module${moduleName}`] = new modules[moduleName](this);
     }
 
     return this[`module${moduleName}`]

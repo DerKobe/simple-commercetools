@@ -1,4 +1,4 @@
-import { CommonModule } from './Modules'
+import { CommonModule } from './CommonModule';
 
 export class Categories extends CommonModule {
   protected entityType = 'categories';

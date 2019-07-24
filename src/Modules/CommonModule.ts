@@ -1,20 +1,5 @@
-/* tslint:disable:max-classes-per-file */
-import { Commercetools } from "./Commeretools";
-import { Entity, PagedQueryResult, Sort, UpdateAction } from './types';
-
-export abstract class BaseModule {
-  protected readonly commercetools;
-  protected readonly request;
-  protected readonly client;
-  protected headers = { Accept: 'application/json', 'Content-Type': 'application/json' };
-  protected entityType?: string;
-
-  constructor(commercetools: Commercetools) {
-    this.commercetools = commercetools;
-    this.request = commercetools.request;
-    this.client = commercetools.client;
-  }
-}
+import { Entity, PagedQueryResult, Sort, UpdateAction } from '../types';
+import { BaseModule } from './BaseModule'
 
 export abstract class CommonModule extends BaseModule {
   protected entityType?: string;

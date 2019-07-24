@@ -1,5 +1,5 @@
-import { CommonModule } from './Modules'
-import { Order, PagedQueryResult, Sort } from "./types";
+import { CommonModule } from './CommonModule';
+import { Order, PagedQueryResult, Sort } from "../types";
 
 export class Orders extends CommonModule {
   protected entityType = 'orders';

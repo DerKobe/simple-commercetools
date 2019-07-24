@@ -1,5 +1,5 @@
-import { BaseModule } from './Modules';
-import { PagedQueryResult } from './types';
+import { PagedQueryResult } from '../types';
+import { BaseModule } from './BaseModule';
 
 export class ProductProjections extends BaseModule {
   public async fetchBySku(sku: string, marked?: boolean): Promise<any> { // TODO define ProductProjection interface

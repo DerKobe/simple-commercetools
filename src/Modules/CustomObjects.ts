@@ -1,5 +1,5 @@
-import { BaseModule } from './Modules'
-import { CustomObject, CustomObjectDraft, PagedQueryResult, Sort } from './types';
+import { CustomObject, CustomObjectDraft, PagedQueryResult, Sort } from '../types';
+import { BaseModule } from './BaseModule';
 
 export class CustomObjects extends BaseModule {
   public async fetchAll(page?: number, perPage?: number, condition?: string, sort?: Sort): Promise<PagedQueryResult<CustomObject>> {
