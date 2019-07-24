@@ -83,6 +83,7 @@ export class Commercetools {
     await this.initClient();
 
     if (!this[`module${moduleName}`]) {
+      console.log(moduleName, modules);
       this[`module${moduleName}`] = new modules[moduleName](this);
     }
 
