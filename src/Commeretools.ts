@@ -95,7 +95,7 @@ export class Commercetools {
     await this.initClient();
 
     if (!this[`module${moduleName}`]) {
-      this[`module${moduleName}`] = new global[this[`module${moduleName}`]](this);
+      this[`module${moduleName}`] = new global[this[moduleName]](this);
     }
 
     return this[`module${moduleName}`]
