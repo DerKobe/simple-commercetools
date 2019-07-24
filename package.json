@@ -5,16 +5,15 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
+    "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DerKobe/multi-commercetools.git"
+    "url": "git+https://github.com/DerKobe/simple-commercetools.git"
   },
-  "keywords": [
-    "commercetools"
-  ],
+  "keywords": ["commercetools"],
   "author": "Philip Claren <philip@claren.io>",
   "license": "ISC",
   "bugs": {
