@@ -1,4 +1,5 @@
 import 'isomorphic-fetch';
+import * as modules from './Modules/index';
 interface CommercetoolsConfig {
     projectKey: string;
     clientId: string;
@@ -9,18 +10,18 @@ interface CommercetoolsConfig {
     apiHost: string;
 }
 export declare class Commercetools {
-    readonly carts: any;
-    readonly categories: any;
-    readonly channels: any;
-    readonly customObjects: any;
-    readonly extensions: any;
-    readonly inventoryEntries: any;
-    readonly orders: any;
-    readonly productProjections: any;
-    readonly products: any;
-    readonly productTypes: any;
-    readonly subscriptions: any;
-    readonly taxCategories: any;
+    readonly carts: modules.Carts;
+    readonly categories: modules.Categories;
+    readonly channels: modules.Channels;
+    readonly customObjects: modules.CustomObjects;
+    readonly extensions: modules.Extensions;
+    readonly inventoryEntries: modules.InventoryEntries;
+    readonly orders: modules.Orders;
+    readonly productProjections: modules.ProductProjections;
+    readonly products: modules.Products;
+    readonly productTypes: modules.ProductTypes;
+    readonly subscriptions: modules.Subscriptions;
+    readonly taxCategories: modules.TaxCategories;
     readonly projectKey: string;
     readonly client: any;
     readonly request: any;

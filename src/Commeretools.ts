@@ -17,18 +17,18 @@ interface CommercetoolsConfig {
 }
 
 export class Commercetools {
-  public get carts() { return this.initModule('Carts') }
-  public get categories() { return this.initModule('Categories') }
-  public get channels() { return this.initModule('Channels') }
-  public get customObjects() { return this.initModule('CustomObjects') }
-  public get extensions() { return this.initModule('Extensions') }
-  public get inventoryEntries() { return this.initModule('InventoryEntries') }
-  public get orders() { return this.initModule('Orders') }
-  public get productProjections() { return this.initModule('ProductProjections') }
-  public get products() { return this.initModule('Products') }
-  public get productTypes() { return this.initModule('ProductTypes') }
-  public get subscriptions() { return this.initModule('Subscriptions') }
-  public get taxCategories() { return this.initModule('TaxCategories') }
+  public get carts(): modules.Carts { return this.initModule('Carts') }
+  public get categories(): modules.Categories { return this.initModule('Categories') }
+  public get channels(): modules.Channels { return this.initModule('Channels') }
+  public get customObjects(): modules.CustomObjects { return this.initModule('CustomObjects') }
+  public get extensions(): modules.Extensions { return this.initModule('Extensions') }
+  public get inventoryEntries(): modules.InventoryEntries { return this.initModule('InventoryEntries') }
+  public get orders(): modules.Orders { return this.initModule('Orders') }
+  public get productProjections(): modules.ProductProjections { return this.initModule('ProductProjections') }
+  public get products(): modules.Products { return this.initModule('Products') }
+  public get productTypes(): modules.ProductTypes { return this.initModule('ProductTypes') }
+  public get subscriptions(): modules.Subscriptions { return this.initModule('Subscriptions') }
+  public get taxCategories(): modules.TaxCategories { return this.initModule('TaxCategories') }
 
   public get projectKey() { return this.config.projectKey; }
   public get client() { return this._client; }
