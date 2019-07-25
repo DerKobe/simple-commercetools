@@ -14,6 +14,7 @@ export declare class Commercetools {
     readonly categories: modules.Categories;
     readonly channels: modules.Channels;
     readonly customObjects: modules.CustomObjects;
+    readonly customTypes: modules.CustomTypes;
     readonly extensions: modules.Extensions;
     readonly inventoryEntries: modules.InventoryEntries;
     readonly orders: modules.Orders;

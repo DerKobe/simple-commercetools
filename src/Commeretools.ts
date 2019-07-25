@@ -21,6 +21,7 @@ export class Commercetools {
   public get categories(): modules.Categories { return this.initModule('Categories') }
   public get channels(): modules.Channels { return this.initModule('Channels') }
   public get customObjects(): modules.CustomObjects { return this.initModule('CustomObjects') }
+  public get customTypes(): modules.CustomTypes { return this.initModule('CustomTypes') }
   public get extensions(): modules.Extensions { return this.initModule('Extensions') }
   public get inventoryEntries(): modules.InventoryEntries { return this.initModule('InventoryEntries') }
   public get orders(): modules.Orders { return this.initModule('Orders') }
