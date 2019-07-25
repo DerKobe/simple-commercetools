@@ -89,9 +89,7 @@ export abstract class CommonModule extends BaseModule {
     );
   }
 
-  public async update(keyOrEntity: string | Entity, actions: UpdateAction[]): Promise<void> {
-    const { id, version } = await this.resolveKeyAndVersion(keyOrEntity, this.fetchByKey);
-
+  public async updateByIdAndVersion(id: string, version: number, actions: UpdateAction[]): Promise<void> {
     const updateRequest = {
       uri: this.request[this.entityType as string].byId(id).withVersion(version).build(),
       method: 'POST',
@@ -100,6 +98,16 @@ export abstract class CommonModule extends BaseModule {
     };
 
     return this.client.execute(updateRequest);
+  }
+
+  public async updateByIdOnly(id: string, actions: UpdateAction[]): Promise<void> {
+    const { version } = await this.fetchById(id);
+    return this.updateByIdAndVersion(id, version, actions)
+  }
+
+  public async updateByKeyOnly(key: string, actions: UpdateAction[]): Promise<void> {
+    const { id, version } = await this.resolveKeyAndVersion(key, this.fetchByKey);
+    return this.updateByIdAndVersion(id, version, actions)
   }
 
   protected async resolveKeyAndVersion(keyOrEntity: string | Entity, fetchByKey: Function): Promise<any> {

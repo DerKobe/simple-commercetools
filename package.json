@@ -1,6 +1,6 @@
 {
   "name": "simple-commercetools",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Abstraction layer for working with Commercetools projects in a simpler manner.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
