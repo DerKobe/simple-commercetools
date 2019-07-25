@@ -261,7 +261,7 @@ export interface ProductTypeDraft {
   attributes: AttributeDefinitionDraft[];
 }
 
-export type UpdateAction = AddAttributeDefinition | RemoveAttributeDefinition | AddFieldDefinition | RemoveFieldDefinition; // TODO a lot more are not defined yet
+export type UpdateAction = AddAttributeDefinition | RemoveAttributeDefinition | AddFieldDefinition | RemoveFieldDefinition | ChangeOrderStateDefinition; // TODO a lot more are not defined yet
 
 export interface AddAttributeDefinition {
   action: 'addAttributeDefinition';

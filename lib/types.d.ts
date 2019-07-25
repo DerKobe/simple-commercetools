@@ -223,7 +223,7 @@ export interface ProductTypeDraft {
     description: string;
     attributes: AttributeDefinitionDraft[];
 }
-export declare type UpdateAction = AddAttributeDefinition | RemoveAttributeDefinition | AddFieldDefinition | RemoveFieldDefinition;
+export declare type UpdateAction = AddAttributeDefinition | RemoveAttributeDefinition | AddFieldDefinition | RemoveFieldDefinition | ChangeOrderStateDefinition;
 export interface AddAttributeDefinition {
     action: 'addAttributeDefinition';
     attribute: AttributeDefinitionDraft;
