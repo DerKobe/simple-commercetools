@@ -9,6 +9,8 @@ export declare abstract class CommonModule extends BaseModule {
     delete(keyOrEntity: any): Promise<void>;
     deleteById(id: string): Promise<void>;
     create(draft: any): Promise<any>;
-    update(keyOrEntity: string | Entity, actions: UpdateAction[]): Promise<void>;
+    updateByIdAndVersion(id: string, version: number, actions: UpdateAction[]): Promise<void>;
+    updateByIdOnly(id: string, actions: UpdateAction[]): Promise<void>;
+    updateByKeyOnly(key: string, actions: UpdateAction[]): Promise<void>;
     protected resolveKeyAndVersion(keyOrEntity: string | Entity, fetchByKey: Function): Promise<any>;
 }
