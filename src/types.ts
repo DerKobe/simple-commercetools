@@ -283,6 +283,11 @@ export interface RemoveFieldDefinition {
   fieldName: string;
 }
 
+export interface ChangeOrderStateDefinition {
+  action: 'changeOrderState';
+  orderState: OrderState;
+}
+
 export interface AttributeDefinitionDraft {
   type: AttributeType;
   name: string;

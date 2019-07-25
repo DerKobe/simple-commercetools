@@ -240,6 +240,10 @@ export interface RemoveFieldDefinition {
     action: 'removeFieldDefinition';
     fieldName: string;
 }
+export interface ChangeOrderStateDefinition {
+    action: 'changeOrderState';
+    orderState: OrderState;
+}
 export interface AttributeDefinitionDraft {
     type: AttributeType;
     name: string;
