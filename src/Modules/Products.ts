@@ -1,5 +1,5 @@
-import { CommonModule } from './CommonModule';
 import { PagedQueryResult, Product } from '../types';
+import { CommonModule } from './CommonModule';
 
 export class Products extends CommonModule {
   protected entityType = 'products';

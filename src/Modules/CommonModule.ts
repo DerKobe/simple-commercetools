@@ -51,7 +51,7 @@ export abstract class CommonModule extends BaseModule {
   }
 
   public async delete(keyOrEntity): Promise<void> {
-    const { id, version } = await this.resolveKeyAndVersion(keyOrEntity, this.fetchByKey);
+    const { id, version } = await this.resolveKeyAndVersion(keyOrEntity, this.fetchByKey.bind(this));
 
     const createRequest = {
       uri: this.request[this.entityType as string].byId(id).withVersion(version).build(),
@@ -106,7 +106,7 @@ export abstract class CommonModule extends BaseModule {
   }
 
   public async updateByKeyOnly(key: string, actions: UpdateAction[]): Promise<void> {
-    const { id, version } = await this.resolveKeyAndVersion(key, this.fetchByKey);
+    const { id, version } = await this.resolveKeyAndVersion(key, this.fetchByKey.bind(this));
     return this.updateByIdAndVersion(id, version, actions)
   }
 

@@ -20,7 +20,7 @@ export class CustomTypes extends CommonModule {
   }
 
   public async updateByKey(key: string, actions: UpdateAction[]): Promise<CustomType> {
-    const customType = await this.resolveKeyAndVersion(key, this.fetchByKey);
+    const customType = await this.resolveKeyAndVersion(key, this.fetchByKey.bind(this));
 
     const postRequest = {
       uri: this.request.types.byKey(key).build(),
