@@ -1,7 +1,7 @@
 import { PagedQueryResult, Product } from '../types';
 import { CommonModule } from './CommonModule';
 
-export class Products extends CommonModule {
+export class Products extends CommonModule<Product> {
   protected entityType = 'products';
 
   public fetchAllByAttribute(name: string, value: string, page?: number, perPage?: number): Promise<PagedQueryResult<Product>> {

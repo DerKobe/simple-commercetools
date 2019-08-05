@@ -1,7 +1,7 @@
 import { CommonModule } from './CommonModule';
 import { CustomType, CustomTypeDraft, UpdateAction } from '../types'
 
-export class CustomTypes extends CommonModule {
+export class CustomTypes extends CommonModule<CustomType>{
   protected entityType = 'types';
 
   public async create(customTypeDraft: CustomTypeDraft): Promise<CustomType> {

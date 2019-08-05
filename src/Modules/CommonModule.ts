@@ -1,10 +1,10 @@
 import { Entity, PagedQueryResult, Sort, UpdateAction } from '../types';
 import { BaseModule } from './BaseModule'
 
-export abstract class CommonModule extends BaseModule {
+export abstract class CommonModule<T> extends BaseModule {
   protected entityType?: string;
 
-  public async fetchAll(page?: number, perPage?: number, condition?: string, sort?: Sort): Promise<PagedQueryResult<any>> {
+  public async fetchAll(page?: number, perPage?: number, condition?: string, sort?: Sort): Promise<PagedQueryResult<T>> {
     let uri = this.request[this.entityType as string];
 
     if (page) {uri = uri.page(page);}
@@ -25,12 +25,12 @@ export abstract class CommonModule extends BaseModule {
     );
   }
 
-  public async fetch(condition): Promise<any> {
+  public async fetch(condition): Promise<T> {
     const response = await this.fetchAll(1, 1, condition);
     return response.results[0];
   }
 
-  public async fetchByKey(key: string): Promise<any> {
+  public async fetchByKey(key: string): Promise<T> {
     const fetchRequest = {
       uri: this.request[this.entityType as string].byKey(key).build(),
       method: 'GET',
@@ -40,9 +40,47 @@ export abstract class CommonModule extends BaseModule {
     return this.client.execute(fetchRequest).then(({ body }) => body);
   }
 
-  public async fetchById(id: string): Promise<any> {
+  public async fetchById(id: string): Promise<T> {
     const fetchRequest = {
       uri: this.request[this.entityType as string].byId(id).build(),
+      method: 'GET',
+      headers: this.headers,
+    };
+
+    return this.client.execute(fetchRequest).then(({ body }) => body);
+  }
+
+  public async fetchAllExpanded(page?: number, perPage?: number, condition?: string, expansions?: string[], sort?: Sort): Promise<PagedQueryResult<T>> {
+    let uri = this.request[this.entityType as string];
+
+    if (page) { uri = uri.page(page); }
+    if (perPage) { uri = uri.perPage(perPage); }
+    if (condition) { uri = uri.where(condition); }
+    if (expansions) { expansions.forEach(expansion => uri = uri.expand(expansion)); }
+    if (sort) { uri = uri.parse({ sort }); }
+
+    const fetchRequest = {
+      uri: uri.build(),
+      method: 'GET',
+      headers: this.headers,
+    };
+
+    return (
+      this.client
+        .execute(fetchRequest)
+        .then(response => response.body)
+    );
+  }
+
+  public fetchExpandedById(id: string, expansions?: string[]): Promise<T> {
+    let uri = this.request().orders.byId(id);
+
+    if (expansions) {
+      expansions.forEach(expansion => uri = uri.expand(expansion))
+    }
+
+    const fetchRequest = {
+      uri: uri.build(),
       method: 'GET',
       headers: this.headers,
     };
@@ -63,6 +101,7 @@ export abstract class CommonModule extends BaseModule {
   }
 
   public async deleteById(id: string): Promise<void> {
+    // @ts-ignore
     const { version } = await this.fetchById(id);
 
     const deleteRequest = {

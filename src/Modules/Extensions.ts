@@ -1,5 +1,6 @@
-import { CommonModule } from './CommonModule';;
+import { Extension } from "../types";
+import { CommonModule } from './CommonModule';
 
-export class Extensions extends CommonModule {
+export class Extensions extends CommonModule<Extension> {
   protected entityType = 'extensions';
 }
