@@ -1,7 +1,7 @@
-import { CommonModule } from './CommonModule';
 import { InventoryEntry, PagedQueryResult } from '../types';
+import { CommonModule } from './CommonModule';
 
-export class InventoryEntries extends CommonModule {
+export class InventoryEntries extends CommonModule<InventoryEntry> {
   protected entityType = 'inventory';
 
   public fetchAllByChannelId(channelId: string): Promise<PagedQueryResult<InventoryEntry>> {

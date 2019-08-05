@@ -1,11 +1,13 @@
 import { Entity, PagedQueryResult, Sort, UpdateAction } from '../types';
 import { BaseModule } from './BaseModule';
-export declare abstract class CommonModule extends BaseModule {
+export declare abstract class CommonModule<T extends Entity> extends BaseModule {
     protected entityType?: string;
-    fetchAll(page?: number, perPage?: number, condition?: string, sort?: Sort): Promise<PagedQueryResult<any>>;
-    fetch(condition: any): Promise<any>;
-    fetchByKey(key: string): Promise<any>;
-    fetchById(id: string): Promise<any>;
+    fetchAll(page?: number, perPage?: number, condition?: string, sort?: Sort): Promise<PagedQueryResult<T>>;
+    fetch(condition: any): Promise<T>;
+    fetchByKey(key: string): Promise<T>;
+    fetchById(id: string): Promise<T>;
+    fetchAllExpanded(page?: number, perPage?: number, condition?: string, expansions?: string[], sort?: Sort): Promise<PagedQueryResult<T>>;
+    fetchExpandedById(id: string, expansions?: string[]): Promise<T>;
     delete(keyOrEntity: any): Promise<void>;
     deleteById(id: string): Promise<void>;
     create(draft: any): Promise<any>;

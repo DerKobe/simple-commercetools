@@ -1,5 +1,6 @@
 export interface Entity {
-  key: string;
+  id: string;
+  key?: string;
   version: number;
 }
 
