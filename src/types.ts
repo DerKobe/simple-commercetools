@@ -262,29 +262,122 @@ export interface ProductTypeDraft {
   attributes: AttributeDefinitionDraft[];
 }
 
-export type UpdateAction = AddAttributeDefinition | RemoveAttributeDefinition | AddFieldDefinition | RemoveFieldDefinition | ChangeOrderStateDefinition; // TODO a lot more are not defined yet
+export type UpdateAction =
+  AddAssetUpdateAction
+  | RemoveAssetByIdUpdateAction
+  | RemoveAssetByKeyUpdateAction
+  | AddExternalImageImageUpdateAction
+  | RemoveImageUpdateAction
+  | SetSkuUpdateAction
+  | ChangePriceUpdateAction
+  | SetPricesUpdateAction
+  | ChangeSlugUpdateAction
+  | ChangeNameUpdateAction
+  | AddAttributeUpdateAction
+  | RemoveAttributeUpdateAction
+  | AddFieldUpdateAction
+  | RemoveFieldUpdateAction
+  | ChangeOrderStateUpdateAction
+  | SetAttributeUpdateAction; // TODO a lot more are not defined yet
 
-export interface AddAttributeDefinition {
+export interface SetAttributeUpdateAction {
+  action: 'setAttribute';
+  variantId: string;
+  name: string;
+  value?: any;
+  staged?: boolean;
+}
+
+export interface AddAssetUpdateAction {
+  action: 'addAsset';
+  variantId: string;
+  position?: string;
+  asset: AssetDraft;
+  staged?: boolean;
+}
+
+export interface RemoveAssetByIdUpdateAction {
+  action: 'removeAsset';
+  variantId: string;
+  assetId: string;
+  staged?: boolean;
+}
+
+export interface RemoveAssetByKeyUpdateAction {
+  action: 'removeAsset';
+  variantId: string;
+  assetKey: string;
+  staged?: boolean;
+}
+
+export interface AddExternalImageImageUpdateAction {
+  action: 'addExternalImage';
+  variantId: string;
+  image: Image;
+  staged?: boolean;
+}
+
+export interface RemoveImageUpdateAction {
+  action: 'removeImage';
+  variantId: string;
+  imageUrl: string;
+  staged?: boolean;
+}
+
+export interface SetSkuUpdateAction {
+  action: 'setSku';
+  variantId: string;
+  sku: string;
+  staged?: boolean;
+}
+
+export interface ChangePriceUpdateAction {
+  action: 'changePrices';
+  priceId: string;
+  price: PriceDraft;
+  staged?: boolean;
+}
+
+export interface SetPricesUpdateAction {
+  action: 'setPrices';
+  variantId: string;
+  prices: PriceDraft[];
+  staged?: boolean;
+}
+
+export interface ChangeNameUpdateAction {
+  action: 'changeName';
+  name: LocalizedString;
+  staged?: boolean;
+}
+
+export interface ChangeSlugUpdateAction {
+  action: 'changeSlug';
+  slug: LocalizedString;
+  staged?: boolean;
+}
+
+export interface AddAttributeUpdateAction {
   action: 'addAttributeDefinition';
   attribute: AttributeDefinitionDraft;
 }
 
-export interface RemoveAttributeDefinition {
+export interface RemoveAttributeUpdateAction {
   action: 'removeAttributeDefinition';
   name: string;
 }
 
-export interface AddFieldDefinition {
+export interface AddFieldUpdateAction {
   action: 'addFieldDefinition';
   fieldDefinition: FieldDefinition;
 }
 
-export interface RemoveFieldDefinition {
+export interface RemoveFieldUpdateAction {
   action: 'removeFieldDefinition';
   fieldName: string;
 }
 
-export interface ChangeOrderStateDefinition {
+export interface ChangeOrderStateUpdateAction {
   action: 'changeOrderState';
   orderState: OrderState;
 }
