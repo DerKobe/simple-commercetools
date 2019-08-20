@@ -282,7 +282,7 @@ export type UpdateAction =
 
 export interface SetAttributeUpdateAction {
   action: 'setAttribute';
-  variantId: string;
+  variantId: number | string;
   name: string;
   value?: any;
   staged?: boolean;
@@ -290,7 +290,7 @@ export interface SetAttributeUpdateAction {
 
 export interface AddAssetUpdateAction {
   action: 'addAsset';
-  variantId: string;
+  variantId: number | string;
   position?: string;
   asset: AssetDraft;
   staged?: boolean;
@@ -298,35 +298,35 @@ export interface AddAssetUpdateAction {
 
 export interface RemoveAssetByIdUpdateAction {
   action: 'removeAsset';
-  variantId: string;
+  variantId: number | string;
   assetId: string;
   staged?: boolean;
 }
 
 export interface RemoveAssetByKeyUpdateAction {
   action: 'removeAsset';
-  variantId: string;
+  variantId: number | string;
   assetKey: string;
   staged?: boolean;
 }
 
 export interface AddExternalImageImageUpdateAction {
   action: 'addExternalImage';
-  variantId: string;
+  variantId: number | string;
   image: Image;
   staged?: boolean;
 }
 
 export interface RemoveImageUpdateAction {
   action: 'removeImage';
-  variantId: string;
+  variantId: number | string;
   imageUrl: string;
   staged?: boolean;
 }
 
 export interface SetSkuUpdateAction {
   action: 'setSku';
-  variantId: string;
+  variantId: number | string;
   sku: string;
   staged?: boolean;
 }
@@ -340,7 +340,7 @@ export interface ChangePriceUpdateAction {
 
 export interface SetPricesUpdateAction {
   action: 'setPrices';
-  variantId: string;
+  variantId: number | string;
   prices: PriceDraft[];
   staged?: boolean;
 }
