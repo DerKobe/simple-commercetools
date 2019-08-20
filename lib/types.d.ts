@@ -270,7 +270,7 @@ export interface SetSkuUpdateAction {
     staged?: boolean;
 }
 export interface ChangePriceUpdateAction {
-    action: 'changePrices';
+    action: 'changePrice';
     priceId: string;
     price: PriceDraft;
     staged?: boolean;
