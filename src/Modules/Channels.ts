@@ -1,7 +1,7 @@
-import { Channel } from '../types';
+import { Channel, ChannelDraft } from '../types';
 import { CommonModule } from './CommonModule';
 
-export class Channels extends CommonModule<Channel> {
+export class Channels extends CommonModule<Channel, ChannelDraft> {
   protected entityType = 'channels';
 
   public async fetchByKey(key: string): Promise<Channel> {

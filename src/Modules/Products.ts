@@ -1,7 +1,7 @@
-import { PagedQueryResult, Product } from '../types';
+import { PagedQueryResult, Product, ProductDraft } from '../types';
 import { CommonModule } from './CommonModule';
 
-export class Products extends CommonModule<Product> {
+export class Products extends CommonModule<Product, ProductDraft> {
   protected entityType = 'products';
 
   public fetchAllByAttribute(name: string, value: string, page?: number, perPage?: number): Promise<PagedQueryResult<Product>> {
@@ -16,6 +16,12 @@ export class Products extends CommonModule<Product> {
 
   public async fetchByVariantSku(sku: string): Promise<Product> {
     const where = `masterData(current(masterVariant(sku="${sku}")))`;
+    const response = await this.fetchAll(1, 1, where);
+    return response.results[0];
+  }
+
+  public async fetchByVariantKey(key: string): Promise<Product> {
+    const where = `masterData(current(masterVariant(key="${key}")))`;
     const response = await this.fetchAll(1, 1, where);
     return response.results[0];
   }
