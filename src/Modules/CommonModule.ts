@@ -129,7 +129,7 @@ export abstract class CommonModule<T extends Entity, Draft extends any> extends 
 
   public async updateByIdAndVersion(id: string, version: number, actions: UpdateAction[]): Promise<T> {
     const updateRequest = {
-      uri: this.request[this.entityType as string].byId(id).withVersion(version).build(),
+      uri: this.request[this.entityType as string].byId(id).build(),
       method: 'POST',
       headers: this.headers,
       body: { version, actions },
