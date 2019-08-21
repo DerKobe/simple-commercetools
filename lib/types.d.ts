@@ -224,7 +224,10 @@ export interface ProductTypeDraft {
     description: string;
     attributes: AttributeDefinitionDraft[];
 }
-export declare type UpdateAction = AddAssetUpdateAction | RemoveAssetByIdUpdateAction | RemoveAssetByKeyUpdateAction | AddExternalImageImageUpdateAction | RemoveImageUpdateAction | SetSkuUpdateAction | ChangePriceUpdateAction | SetPricesUpdateAction | ChangeSlugUpdateAction | ChangeNameUpdateAction | AddAttributeUpdateAction | RemoveAttributeUpdateAction | AddFieldUpdateAction | RemoveFieldUpdateAction | ChangeOrderStateUpdateAction | SetAttributeUpdateAction;
+export declare type UpdateAction = AddAssetUpdateAction | RemoveAssetByIdUpdateAction | RemoveAssetByKeyUpdateAction | AddExternalImageImageUpdateAction | RemoveImageUpdateAction | SetSkuUpdateAction | ChangePriceUpdateAction | SetPricesUpdateAction | ChangeSlugUpdateAction | ChangeNameUpdateAction | AddAttributeUpdateAction | RemoveAttributeUpdateAction | AddFieldUpdateAction | RemoveFieldUpdateAction | ChangeOrderStateUpdateAction | SetAttributeUpdateAction | UnpublishUpdateAction;
+export interface UnpublishUpdateAction {
+    action: 'unpublish';
+}
 export interface SetAttributeUpdateAction {
     action: 'setAttribute';
     variantId: number | string;

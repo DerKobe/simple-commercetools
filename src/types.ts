@@ -278,7 +278,12 @@ export type UpdateAction =
   | AddFieldUpdateAction
   | RemoveFieldUpdateAction
   | ChangeOrderStateUpdateAction
-  | SetAttributeUpdateAction; // TODO a lot more are not defined yet
+  | SetAttributeUpdateAction
+  | UnpublishUpdateAction; // TODO a lot more are not defined yet
+
+export interface UnpublishUpdateAction {
+  action: 'unpublish';
+}
 
 export interface SetAttributeUpdateAction {
   action: 'setAttribute';
