@@ -279,7 +279,18 @@ export type UpdateAction =
   | RemoveFieldUpdateAction
   | ChangeOrderStateUpdateAction
   | SetAttributeUpdateAction
-  | UnpublishUpdateAction; // TODO a lot more are not defined yet
+  | UnpublishUpdateAction
+  | PublishUpdateAction; // TODO a lot more are not defined yet
+
+export interface PublishUpdateAction {
+  action: 'Publish';
+  scope?: PublishUpdateActionScope;
+}
+
+export enum PublishUpdateActionScope {
+  All = 'All',
+  Prices = 'Prices',
+}
 
 export interface UnpublishUpdateAction {
   action: 'unpublish';

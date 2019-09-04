@@ -10,7 +10,7 @@ export class Products extends CommonModule<Product, ProductDraft> {
   }
 
   public async fetchByAttribute(name: string, value: string): Promise<Product> {
-    const response = await this.fetchAllByAttribute(name, value, 1, 1, );
+    const response = await this.fetchAllByAttribute(name, value, 1, 1);
     return response.results[0];
   }
 
