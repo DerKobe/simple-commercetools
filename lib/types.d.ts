@@ -224,7 +224,15 @@ export interface ProductTypeDraft {
     description: string;
     attributes: AttributeDefinitionDraft[];
 }
-export declare type UpdateAction = AddAssetUpdateAction | RemoveAssetByIdUpdateAction | RemoveAssetByKeyUpdateAction | AddExternalImageImageUpdateAction | RemoveImageUpdateAction | SetSkuUpdateAction | ChangePriceUpdateAction | SetPricesUpdateAction | ChangeSlugUpdateAction | ChangeNameUpdateAction | AddAttributeUpdateAction | RemoveAttributeUpdateAction | AddFieldUpdateAction | RemoveFieldUpdateAction | ChangeOrderStateUpdateAction | SetAttributeUpdateAction | UnpublishUpdateAction;
+export declare type UpdateAction = AddAssetUpdateAction | RemoveAssetByIdUpdateAction | RemoveAssetByKeyUpdateAction | AddExternalImageImageUpdateAction | RemoveImageUpdateAction | SetSkuUpdateAction | ChangePriceUpdateAction | SetPricesUpdateAction | ChangeSlugUpdateAction | ChangeNameUpdateAction | AddAttributeUpdateAction | RemoveAttributeUpdateAction | AddFieldUpdateAction | RemoveFieldUpdateAction | ChangeOrderStateUpdateAction | SetAttributeUpdateAction | UnpublishUpdateAction | PublishUpdateAction;
+export interface PublishUpdateAction {
+    action: 'Publish';
+    scope?: PublishUpdateActionScope;
+}
+export declare enum PublishUpdateActionScope {
+    All = "All",
+    Prices = "Prices"
+}
 export interface UnpublishUpdateAction {
     action: 'unpublish';
 }
