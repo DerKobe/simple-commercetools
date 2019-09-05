@@ -283,7 +283,7 @@ export type UpdateAction =
   | PublishUpdateAction; // TODO a lot more are not defined yet
 
 export interface PublishUpdateAction {
-  action: 'Publish';
+  action: 'publish';
   scope?: PublishUpdateActionScope;
 }
 

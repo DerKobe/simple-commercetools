@@ -226,7 +226,7 @@ export interface ProductTypeDraft {
 }
 export declare type UpdateAction = AddAssetUpdateAction | RemoveAssetByIdUpdateAction | RemoveAssetByKeyUpdateAction | AddExternalImageImageUpdateAction | RemoveImageUpdateAction | SetSkuUpdateAction | ChangePriceUpdateAction | SetPricesUpdateAction | ChangeSlugUpdateAction | ChangeNameUpdateAction | AddAttributeUpdateAction | RemoveAttributeUpdateAction | AddFieldUpdateAction | RemoveFieldUpdateAction | ChangeOrderStateUpdateAction | SetAttributeUpdateAction | UnpublishUpdateAction | PublishUpdateAction;
 export interface PublishUpdateAction {
-    action: 'Publish';
+    action: 'publish';
     scope?: PublishUpdateActionScope;
 }
 export declare enum PublishUpdateActionScope {
