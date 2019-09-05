@@ -29,7 +29,6 @@ export declare class Commercetools {
     locale: string | undefined;
     private readonly config;
     private _client;
-    private _request;
     private moduleCarts?;
     private moduleCategories?;
     private moduleChannels?;

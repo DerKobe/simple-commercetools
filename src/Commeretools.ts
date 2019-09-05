@@ -33,14 +33,13 @@ export class Commercetools {
 
   public get projectKey() { return this.config.projectKey; }
   public get client() { return this._client; }
-  public get request() { return this._request; }
+  public get request() {  return createRequestBuilder({ projectKey: this.projectKey }); }
 
   public locale: string | undefined;
 
   private readonly config: CommercetoolsConfig;
 
   private _client;
-  private _request;
 
   private moduleCarts?: modules.Carts;
   private moduleCategories?: modules.Categories;
@@ -75,7 +74,6 @@ export class Commercetools {
       credentials: { clientId, clientSecret },
     });
 
-    this._request = createRequestBuilder({ projectKey });
     this._client = createClient({ middlewares: [authMiddleware, httpMiddleware, queueMiddleware] });
 
     this.locale = locale;
