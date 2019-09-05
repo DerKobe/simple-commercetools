@@ -224,7 +224,32 @@ export interface ProductTypeDraft {
     description: string;
     attributes: AttributeDefinitionDraft[];
 }
-export declare type UpdateAction = AddAssetUpdateAction | RemoveAssetByIdUpdateAction | RemoveAssetByKeyUpdateAction | AddExternalImageImageUpdateAction | RemoveImageUpdateAction | SetSkuUpdateAction | ChangePriceUpdateAction | SetPricesUpdateAction | ChangeSlugUpdateAction | ChangeNameUpdateAction | AddAttributeUpdateAction | RemoveAttributeUpdateAction | AddFieldUpdateAction | RemoveFieldUpdateAction | ChangeOrderStateUpdateAction | SetAttributeUpdateAction | UnpublishUpdateAction | PublishUpdateAction;
+export declare type UpdateAction = AddAssetUpdateAction | RemoveAssetByIdUpdateAction | RemoveAssetByKeyUpdateAction | AddExternalImageImageUpdateAction | RemoveImageUpdateAction | SetSkuUpdateAction | ChangePriceUpdateAction | SetPricesUpdateAction | ChangeSlugUpdateAction | ChangeProductNameUpdateAction | AddAttributeUpdateAction | RemoveAttributeUpdateAction | AddFieldUpdateAction | RemoveFieldUpdateAction | ChangeOrderStateUpdateAction | SetAttributeUpdateAction | UnpublishUpdateAction | PublishUpdateAction;
+export interface ChangeTaxCategoryNameUpdateAction {
+    action: 'changeName';
+    name: string;
+}
+export interface SetKeyUpdateAction {
+    action: 'setKey';
+    key?: string;
+}
+export interface SetDescriptionUpdateAction {
+    action: 'setDescription';
+    description?: string;
+}
+export interface RemoveTaxRateUpdateAction {
+    action: 'removeTaxRate';
+    taxRateId: string;
+}
+export interface AddTaxRateUpdateAction {
+    action: 'addTaxRate';
+    taxRate: TaxRate;
+}
+export interface ReplaceTaxRateUpdateAction {
+    action: 'replaceTaxRate';
+    taxRateId: string;
+    taxRate: TaxRate;
+}
 export interface PublishUpdateAction {
     action: 'publish';
     scope?: PublishUpdateActionScope;
@@ -292,7 +317,7 @@ export interface SetPricesUpdateAction {
     prices: PriceDraft[];
     staged?: boolean;
 }
-export interface ChangeNameUpdateAction {
+export interface ChangeProductNameUpdateAction {
     action: 'changeName';
     name: LocalizedString;
     staged?: boolean;

@@ -272,7 +272,7 @@ export type UpdateAction =
   | ChangePriceUpdateAction
   | SetPricesUpdateAction
   | ChangeSlugUpdateAction
-  | ChangeNameUpdateAction
+  | ChangeProductNameUpdateAction
   | AddAttributeUpdateAction
   | RemoveAttributeUpdateAction
   | AddFieldUpdateAction
@@ -282,6 +282,34 @@ export type UpdateAction =
   | UnpublishUpdateAction
   | PublishUpdateAction; // TODO a lot more are not defined yet
 
+// TaxCategory
+export interface ChangeTaxCategoryNameUpdateAction {
+  action: 'changeName';
+  name: string;
+}
+export interface SetKeyUpdateAction {
+  action: 'setKey';
+  key?: string;
+}
+export interface SetDescriptionUpdateAction {
+  action: 'setDescription';
+  description?: string;
+}
+export interface RemoveTaxRateUpdateAction {
+  action: 'removeTaxRate';
+  taxRateId: string;
+}
+export interface AddTaxRateUpdateAction {
+  action: 'addTaxRate';
+  taxRate: TaxRate;
+}
+export interface ReplaceTaxRateUpdateAction {
+  action: 'replaceTaxRate';
+  taxRateId: string;
+  taxRate: TaxRate;
+}
+
+// Product
 export interface PublishUpdateAction {
   action: 'publish';
   scope?: PublishUpdateActionScope;
@@ -361,7 +389,7 @@ export interface SetPricesUpdateAction {
   staged?: boolean;
 }
 
-export interface ChangeNameUpdateAction {
+export interface ChangeProductNameUpdateAction {
   action: 'changeName';
   name: LocalizedString;
   staged?: boolean;
