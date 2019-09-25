@@ -678,7 +678,7 @@ export declare type UpdateOrderAction = ChangeOrderStateAction;
 export declare enum OrderState {
     Open = "Open",
     Confirmed = "Confirmed",
-    Completed = "Completed",
+    Complete = "Complete",
     Cancelled = "Cancelled"
 }
 export interface ChangeOrderStateAction {
