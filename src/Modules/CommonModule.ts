@@ -73,7 +73,7 @@ export abstract class CommonModule<T extends Entity, Draft extends any> extends 
   }
 
   public fetchExpandedById(id: string, expansions?: string[]): Promise<T> {
-    let uri = this.request().orders.byId(id);
+    let uri = this.request[this.entityType as string].byId(id);
 
     if (expansions) {
       expansions.forEach(expansion => uri = uri.expand(expansion))
