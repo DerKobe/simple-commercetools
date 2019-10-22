@@ -11,7 +11,7 @@ interface CommercetoolsConfig {
   apiHost: string,
 }
 const config: CommercetoolsConfig = { ... }
-
+test
 const commercetools = new Commercetools(config);
 
 interface PagedQueryResult {
