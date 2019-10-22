@@ -48,6 +48,32 @@ export class ProductProjections extends BaseModule {
     );
   }
 
+  public async suggest(keyword: string, locale: string, filterByProductTypeKey?: string): Promise<PagedQueryResult<any>> { // TODO define ProductProjection interface
+    let uri = this.request.productProjectionsSuggest.searchKeywords(keyword, locale);
+
+    if (filterByProductTypeKey) {
+      const fetchProductTypeRequest = {
+        uri: this.request.productTypes.byKey(filterByProductTypeKey).build(),
+        method: 'GET',
+        headers: this.headers,
+      };
+      const productTypeId = await this.client.execute(fetchProductTypeRequest).then(response => response.body.id);
+      uri = uri.filterByQuery(`productType.id:"${productTypeId}"`)
+    }
+
+    const fetchRequest = {
+      uri: uri.build(),
+      method: 'GET',
+      headers: this.headers,
+    };
+
+    return (
+      this.client
+        .execute(fetchRequest)
+        .then(response => (response.body as PagedQueryResult<any>))
+    );
+  }
+
   public async getAllPossibleValuesForAttribute(attributeName: string): Promise<string[]> {
     const facetSelector = `variants.attributes.${attributeName}`;
 
