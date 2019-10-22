@@ -1,5 +1,5 @@
-import { PagedQueryResult } from '../types';
-import { BaseModule } from './BaseModule';
+import {PagedQueryResult} from '../types';
+import {BaseModule} from './BaseModule';
 
 export class ProductProjections extends BaseModule {
   public async fetchBySku(sku: string, marked?: boolean): Promise<any> { // TODO define ProductProjection interface
@@ -22,12 +22,14 @@ export class ProductProjections extends BaseModule {
     );
   }
 
-  public async search(searchTerm: string, locale: string, filterByProductTypeKey?: string): Promise<PagedQueryResult<any>> { // TODO define ProductProjection interface
+  public async search(searchTerm: string, locale: string, filters?: Array<{ key: string, value: string }>): Promise<PagedQueryResult<any>> { // TODO define ProductProjection interface
     let uri = this.request.productProjectionsSearch.markMatchingVariants().text(searchTerm, locale);
 
-    if (filterByProductTypeKey) {
+    const productFilter = filters && filters.find(f => f.key === 'ProductTypeKey');
+
+    if (productFilter) {
       const fetchProductTypeRequest = {
-        uri: this.request.productTypes.byKey(filterByProductTypeKey).build(),
+        uri: this.request.productTypes.byKey(productFilter.value).build(),
         method: 'GET',
         headers: this.headers,
       };
@@ -35,10 +37,14 @@ export class ProductProjections extends BaseModule {
       uri = uri.filterByQuery(`productType.id:"${productTypeId}"`)
     }
 
+    if (filters) {
+      filters.forEach(f => uri = uri.filterByQuery(`${f.key}:"${f.value}"`))
+    }
+
     const fetchRequest = {
       uri: uri.build(),
       method: 'GET',
-      headers: this.headers,
+      headers: this.headers
     };
 
     return (
@@ -86,7 +92,7 @@ export class ProductProjections extends BaseModule {
     return (
       this.client
         .execute(fetchRequest)
-        .then(response => response.body.facets[facetSelector].terms.map(({ term }) => term))
+        .then(response => response.body.facets[facetSelector].terms.map(({term}) => term))
     );
   }
 }
