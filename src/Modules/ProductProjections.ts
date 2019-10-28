@@ -22,56 +22,31 @@ export class ProductProjections extends BaseModule {
     );
   }
 
-  public async search(searchTerm: string, locale: string, filterByProductTypeKey?: string): Promise<PagedQueryResult<any>> { // TODO define ProductProjection interface
-    let uri = this.request.productProjectionsSearch.markMatchingVariants().text(searchTerm, locale);
+  public async search(searchTerm: string, locale: string, filter?: Array<{ key: string, value: string }>): Promise<PagedQueryResult<any>> { // TODO define ProductProjection interface
+    const uri = this.request.productProjectionsSearch.markMatchingVariants().text(searchTerm, locale);
 
-    if (filterByProductTypeKey) {
-      const fetchProductTypeRequest = {
-        uri: this.request.productTypes.byKey(filterByProductTypeKey).build(),
-        method: 'GET',
-        headers: this.headers,
-      };
-      const productTypeId = await this.client.execute(fetchProductTypeRequest).then(response => response.body.id);
-      uri = uri.filterByQuery(`productType.id:"${productTypeId}"`)
+    if (filter) {
+      for (let i = 0; i < filter.length; i++) {
+        if (filter[i].key === 'productType') {
+          const fetchProductTypeRequest = {
+            uri: this.request.productTypes.byKey('commodity').build(),
+            method: 'GET',
+            headers: this.headers,
+          };
+          const productTypeId = await this.client.execute(fetchProductTypeRequest).then(response => response.body.id);
+          uri.filterByQuery(`productType.id:"${productTypeId}"`)
+        } else {
+          uri.filterByQuery(`${filter[i].key}.de:"${filter[i].value}"`)
+        }
+      }
     }
-
     const fetchRequest = {
       uri: uri.build(),
       method: 'GET',
       headers: this.headers,
     };
 
-    return (
-      this.client
-        .execute(fetchRequest)
-        .then(response => (response.body as PagedQueryResult<any>))
-    );
-  }
-
-  public async suggest(keyword: string, locale: string, filters?: Array<{ key: string, value: string }>): Promise<PagedQueryResult<any>> { // TODO define ProductProjection interface
-    let uri = this.request.productProjectionsSuggest.searchKeywords(keyword, locale);
-
-    if (filters) {
-      filters.forEach(async f => {
-        if (f.key === 'ProductTypeKey') {
-          const fetchProductTypeRequest = {
-            uri: this.request.productTypes.byKey(f.value).build(),
-            method: 'GET',
-            headers: this.headers,
-          };
-          const productTypeId = await this.client.execute(fetchProductTypeRequest).then(response => response.body.id);
-          uri = uri.filterByQuery(`productType.id:"${productTypeId}"`)
-        } else {
-          uri = uri.filterByQuery(`${f.key}:"${f.value}"`);
-        }
-      });
-    }
-
-    const fetchRequest = {
-      uri: uri.build(),
-      method: 'GET',
-      headers: this.headers
-    };
+    console.log('url:', fetchRequest)
 
     return (
       this.client
