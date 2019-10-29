@@ -29,24 +29,23 @@ export class ProductProjections extends BaseModule {
       for (let i = 0; i < filter.length; i++) {
         if (filter[i].key === 'productType') {
           const fetchProductTypeRequest = {
-            uri: this.request.productTypes.byKey('commodity').build(),
+            uri: this.request.productTypes.byKey(filter[i].value).build(),
             method: 'GET',
             headers: this.headers,
           };
           const productTypeId = await this.client.execute(fetchProductTypeRequest).then(response => response.body.id);
           uri.filterByQuery(`productType.id:"${productTypeId}"`)
         } else {
-          uri.filterByQuery(`${filter[i].key}.de:"${filter[i].value}"`)
+          uri.filterByQuery(`variants.attributes.${filter[i].key}:"${filter[i].value}"`)
         }
       }
     }
+
     const fetchRequest = {
       uri: uri.build(),
       method: 'GET',
       headers: this.headers,
     };
-
-    console.log('url:', fetchRequest)
 
     return (
       this.client
