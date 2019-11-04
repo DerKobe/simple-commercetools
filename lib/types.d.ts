@@ -225,6 +225,10 @@ export interface ProductTypeDraft {
     attributes: AttributeDefinitionDraft[];
 }
 export declare type UpdateAction = AddAssetUpdateAction | RemoveAssetByIdUpdateAction | RemoveAssetByKeyUpdateAction | AddExternalImageImageUpdateAction | RemoveImageUpdateAction | SetSkuUpdateAction | ChangePriceUpdateAction | SetPricesUpdateAction | ChangeSlugUpdateAction | ChangeProductNameUpdateAction | AddAttributeUpdateAction | RemoveAttributeUpdateAction | AddFieldUpdateAction | RemoveFieldUpdateAction | ChangeOrderStateUpdateAction | SetAttributeUpdateAction | UnpublishUpdateAction | PublishUpdateAction;
+export interface SetKeyUpdateAction {
+    action: 'setKey';
+    key?: string;
+}
 export interface ChangeTaxCategoryNameUpdateAction {
     action: 'changeName';
     name: string;
