@@ -282,6 +282,12 @@ export type UpdateAction =
   | UnpublishUpdateAction
   | PublishUpdateAction; // TODO a lot more are not defined yet
 
+// ProductType
+export interface SetKeyUpdateAction {
+  action: 'setKey';
+  key?: string;
+}
+
 // TaxCategory
 export interface ChangeTaxCategoryNameUpdateAction {
   action: 'changeName';
@@ -425,6 +431,8 @@ export interface ChangeOrderStateUpdateAction {
   action: 'changeOrderState';
   orderState: OrderState;
 }
+
+// ---
 
 export interface AttributeDefinitionDraft {
   type: AttributeType;
