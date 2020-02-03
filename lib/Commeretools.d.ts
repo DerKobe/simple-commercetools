@@ -10,22 +10,22 @@ interface CommercetoolsConfig {
     apiHost: string;
 }
 export declare class Commercetools {
-    readonly carts: modules.Carts;
-    readonly categories: modules.Categories;
-    readonly channels: modules.Channels;
-    readonly customObjects: modules.CustomObjects;
-    readonly customTypes: modules.CustomTypes;
-    readonly extensions: modules.Extensions;
-    readonly inventoryEntries: modules.InventoryEntries;
-    readonly orders: modules.Orders;
-    readonly productProjections: modules.ProductProjections;
-    readonly products: modules.Products;
-    readonly productTypes: modules.ProductTypes;
-    readonly subscriptions: modules.Subscriptions;
-    readonly taxCategories: modules.TaxCategories;
-    readonly projectKey: string;
-    readonly client: any;
-    readonly request: any;
+    get carts(): modules.Carts;
+    get categories(): modules.Categories;
+    get channels(): modules.Channels;
+    get customObjects(): modules.CustomObjects;
+    get customTypes(): modules.CustomTypes;
+    get extensions(): modules.Extensions;
+    get inventoryEntries(): modules.InventoryEntries;
+    get orders(): modules.Orders;
+    get productProjections(): modules.ProductProjections;
+    get products(): modules.Products;
+    get productTypes(): modules.ProductTypes;
+    get subscriptions(): modules.Subscriptions;
+    get taxCategories(): modules.TaxCategories;
+    get projectKey(): string;
+    get client(): any;
+    get request(): any;
     locale: string | undefined;
     private readonly config;
     private _client;

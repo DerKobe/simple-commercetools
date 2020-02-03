@@ -8,5 +8,5 @@ export declare abstract class BaseModule {
     };
     protected entityType?: string;
     constructor(commercetools: Commercetools);
-    readonly request: any;
+    get request(): any;
 }
