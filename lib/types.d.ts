@@ -165,7 +165,8 @@ export interface DiscountedPrice {
 export interface Money {
     type: string;
     currencyCode: string;
-    centAmount: number;
+    centAmount?: number;
+    preciseAmount?: number;
     fractionDigits: number;
 }
 export interface CustomFields {
