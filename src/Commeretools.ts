@@ -69,6 +69,7 @@ export class Commercetools {
     const httpMiddleware = createHttpMiddleware({ host: apiHost, fetch });
     const queueMiddleware = createQueueMiddleware({ concurrency });
     const authMiddleware = createAuthMiddlewareForClientCredentialsFlow({
+      fetch,
       host: authHost,
       projectKey,
       credentials: { clientId, clientSecret },
