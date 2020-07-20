@@ -281,6 +281,26 @@ export type UpdateAction =
   | ChangeOrderStateUpdateAction
   | SetAttributeUpdateAction
   | UnpublishUpdateAction
+  | SetKeyUpdateAction
+  | ChangeNameUpdateAction
+  | ChangeDescriptionUpdateAction
+  | AddAttributeDefinitionUpdateAction
+  | RemoveAttributeDefinitionUpdateAction
+  | ChangeAttributeNameUpdateAction
+  | ChangeLabelUpdateAction
+  | SetInputTipUpdateAction
+  | AddPlainEnumValueUpdateAction
+  | AddLocalizedEnumValueUpdateAction
+  | RemoveEnumValuesUpdateAction
+  | ChangeAttributeOrderByNameUpdateAction
+  | ChangePlainEnumValueOrderUpdateAction
+  | ChangeLocalizedEnumValueOrderUpdateAction
+  | ChangeEnumKeyUpdateAction
+  | ChangePlainEnumValueLabelUpdateAction
+  | ChangeLocalizedEnumValueLabelUpdateAction
+  | ChangeIsSearchableUpdateAction
+  | ChangeInputHintUpdateAction
+  | AttributeConstraintUpdateAction
   | PublishUpdateAction; // TODO a lot more are not defined yet
 
 // ProductType update actions
