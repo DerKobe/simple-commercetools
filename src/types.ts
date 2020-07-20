@@ -283,13 +283,123 @@ export type UpdateAction =
   | UnpublishUpdateAction
   | PublishUpdateAction; // TODO a lot more are not defined yet
 
-// ProductType
+// ProductType update actions
 export interface SetKeyUpdateAction {
   action: 'setKey';
   key?: string;
 }
 
-// TaxCategory
+export interface ChangeNameUpdateAction {
+  action: 'changeName';
+  name: string;
+}
+
+export interface ChangeDescriptionUpdateAction {
+  action: 'changeDescription';
+  description: string;
+}
+
+export interface AddAttributeDefinitionUpdateAction {
+  action: 'addAttributeDefinition';
+  attribute: AttributeDefinitionDraft;
+}
+
+export interface RemoveAttributeDefinitionUpdateAction {
+  action: 'removeAttributeDefinition';
+  name: string;
+}
+
+export interface ChangeAttributeNameUpdateAction {
+  action: 'changeAttributeName';
+  attributeName: string;
+  newAttributeName: string;
+}
+
+export interface ChangeLabelUpdateAction {
+  action: 'changeLabel';
+  attributeName: string;
+  label: LocalizedString;
+}
+
+export interface SetInputTipUpdateAction {
+  action: 'setInputTip';
+  attributeName: string;
+  inputTip: LocalizedString;
+}
+
+export interface AddPlainEnumValueUpdateAction {
+  action: 'addPlainEnumValue';
+  attributeName: string;
+  value: PlainEnumValue;
+}
+
+export interface AddLocalizedEnumValueUpdateAction {
+  action: 'addLocalizedEnumValue';
+  attributeName: string;
+  value: LocalizedEnumValue;
+}
+
+export interface RemoveEnumValuesUpdateAction {
+  action: 'removeEnumValues';
+  attributeName: string;
+  keys: string[];
+}
+
+export interface ChangeAttributeOrderByNameUpdateAction {
+  action: 'changeAttributeOrderByName';
+  attributeNames: string[];
+}
+
+export interface ChangePlainEnumValueOrderUpdateAction {
+  action: 'changePlainEnumValueOrder';
+  attributeName: string;
+  values: PlainEnumValue[];
+}
+
+export interface ChangeLocalizedEnumValueOrderUpdateAction {
+  action: 'changeLocalizedEnumValueOrder';
+  attributeName: string;
+  values: LocalizedEnumValue[];
+}
+
+export interface ChangeEnumKeyUpdateAction {
+  action: 'changeEnumKey';
+  attributeName: string;
+  key: string;
+  newKey: string;
+}
+
+export interface ChangePlainEnumValueLabelUpdateAction {
+  action: 'changePlainEnumValueLabel';
+  attributeName: string;
+  newValue: PlainEnumValue;
+}
+
+export interface ChangeLocalizedEnumValueLabelUpdateAction {
+  action: 'changeLocalizedEnumValueLabel';
+  attributeName: string;
+  newValue: LocalizedEnumValue;
+}
+
+export interface ChangeIsSearchableUpdateAction {
+  action: 'changeIsSearchable';
+  attributeName: string;
+  isSearchable: boolean;
+}
+
+export interface ChangeInputHintUpdateAction {
+  action: 'changeInputHint';
+  attributeName: string;
+  newValue: TextInputHint;
+}
+
+export interface AttributeConstraintUpdateAction {
+  action: 'attributeConstraint';
+  attributeName: string;
+  newValue: AttributeConstraint.None;
+}
+
+// TaxCategory update actions
 export interface ChangeTaxCategoryNameUpdateAction {
   action: 'changeName';
   name: string;
@@ -316,7 +426,7 @@ export interface ReplaceTaxRateUpdateAction {
   taxRate: TaxRate;
 }
 
-// Product
+// Product update actions
 export interface PublishUpdateAction {
   action: 'publish';
   scope?: PublishUpdateActionScope;
@@ -1183,4 +1293,14 @@ export interface TrackingData {
   provider?: string;
   providerTransaction?: string;
   isReturn?: boolean;
+}
+
+export interface PlainEnumValue {
+  key: string;
+  label: string;
+}
+
+export interface LocalizedEnumValue {
+  key: string;
+  label: LocalizedString;
 }
