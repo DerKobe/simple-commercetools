@@ -11,3 +11,4 @@ export * from './Products';
 export * from './ProductTypes';
 export * from './Subscriptions';
 export * from './TaxCategories';
+export * from './OrderImport';

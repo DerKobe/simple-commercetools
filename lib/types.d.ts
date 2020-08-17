@@ -726,7 +726,7 @@ export interface AzureFunctionsAuthentication {
 }
 export interface Trigger {
     resourceTypeId: 'cart' | 'order' | 'payment' | 'customer';
-    actions: Array<'Create' | 'Update'>;
+    actions: ('Create' | 'Update')[];
 }
 export interface SubscriptionDraft {
     key?: string;
@@ -1101,3 +1101,67 @@ export interface LocalizedEnumValue {
     key: string;
     label: LocalizedString;
 }
+export interface OrderImportDraft {
+    orderNumber?: string;
+    customerId: string;
+    customerEmail?: string;
+    store?: KeyReference;
+    lineItems?: LineItemImportDraft[];
+    customLineItems?: CustomLineItem[];
+    totalPrice: Money;
+    taxedPrice?: TaxedPrice;
+    shippingAddress?: Address;
+    billingAddress?: Address;
+    customerGroup?: Reference;
+    country?: string;
+    orderState?: OrderState;
+    shipmentState?: ShipmentState;
+    paymentState?: PaymentState;
+    shippingInfo?: ShippingInfoImportDraft;
+    completedAt?: DateTime;
+    custom?: CustomFieldsDraft;
+    inventoryMode?: InventoryMode;
+    taxRoundingMode?: RoundingMode;
+    taxCalculationMode?: TaxCalculationMode;
+    origin?: CartOrigin;
+    itemShippingAddresses?: Address[];
+}
+interface LineItemImportDraft {
+    productId?: string;
+    name: LocalizedString;
+    variant: ProductVariantImportDraft;
+    price: Price;
+    quantity: number;
+    state?: ItemState[];
+    supplyChannel?: ResourceIdentifier;
+    distributionChannel?: ResourceIdentifier;
+    taxRate?: TaxRate;
+    custom?: CustomFieldsDraft;
+    shippingDetails?: ItemShippingDetailsDraft;
+}
+interface ShippingInfoImportDraft {
+    shippingMethodName: string;
+    price: Money;
+    shippingRate: ShippingRate;
+    taxRate?: TaxRate;
+    taxCategory?: ResourceIdentifier;
+    shippingMethod?: ResourceIdentifier;
+    deliveries: Delivery[];
+    discountedPrice?: DiscountedLineItemPrice;
+    shippingMethodState: ShippingMethodState;
+}
+interface ProductVariantImportDraft {
+    id?: number;
+    sku?: string;
+    prices?: Price[];
+    attributes?: Attribute[];
+    images?: Image[];
+}
+interface ItemShippingDetailsDraft {
+    targets: ItemShippingTargets[];
+}
+interface ItemShippingTargets {
+    addressKey: string;
+    quantity: number;
+}
+export {};
