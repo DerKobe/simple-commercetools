@@ -18,6 +18,7 @@ export declare class Commercetools {
     get extensions(): modules.Extensions;
     get inventoryEntries(): modules.InventoryEntries;
     get orders(): modules.Orders;
+    get orderImport(): modules.OrderImport;
     get productProjections(): modules.ProductProjections;
     get products(): modules.Products;
     get productTypes(): modules.ProductTypes;

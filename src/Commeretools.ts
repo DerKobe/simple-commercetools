@@ -25,6 +25,7 @@ export class Commercetools {
   public get extensions(): modules.Extensions { return this.initModule('Extensions') }
   public get inventoryEntries(): modules.InventoryEntries { return this.initModule('InventoryEntries') }
   public get orders(): modules.Orders { return this.initModule('Orders') }
+  public get orderImport(): modules.OrderImport { return this.initModule('OrderImport') }
   public get productProjections(): modules.ProductProjections { return this.initModule('ProductProjections') }
   public get products(): modules.Products { return this.initModule('Products') }
   public get productTypes(): modules.ProductTypes { return this.initModule('ProductTypes') }
