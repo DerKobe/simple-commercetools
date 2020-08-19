@@ -38,6 +38,7 @@ export declare class Commercetools {
     private moduleExtensions?;
     private moduleInventoryEntries?;
     private moduleOrders?;
+    private moduleOrderImport?;
     private moduleProductProjections?;
     private moduleProducts?;
     private moduleProductTypes?;

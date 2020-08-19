@@ -50,6 +50,7 @@ export class Commercetools {
   private moduleExtensions?: modules.Extensions;
   private moduleInventoryEntries?: modules.InventoryEntries;
   private moduleOrders?: modules.Orders;
+  private moduleOrderImport?: modules.OrderImport;
   private moduleProductProjections?: modules.ProductProjections;
   private moduleProducts?: modules.Products;
   private moduleProductTypes?: modules.ProductTypes;
