@@ -1126,7 +1126,7 @@ export interface OrderImportDraft {
     origin?: CartOrigin;
     itemShippingAddresses?: Address[];
 }
-interface LineItemImportDraft {
+export interface LineItemImportDraft {
     productId?: string;
     name: LocalizedString;
     variant: ProductVariantImportDraft;
@@ -1139,7 +1139,7 @@ interface LineItemImportDraft {
     custom?: CustomFieldsDraft;
     shippingDetails?: ItemShippingDetailsDraft;
 }
-interface ShippingInfoImportDraft {
+export interface ShippingInfoImportDraft {
     shippingMethodName: string;
     price: Money;
     shippingRate: ShippingRate;
@@ -1150,18 +1150,17 @@ interface ShippingInfoImportDraft {
     discountedPrice?: DiscountedLineItemPrice;
     shippingMethodState: ShippingMethodState;
 }
-interface ProductVariantImportDraft {
+export interface ProductVariantImportDraft {
     id?: number;
     sku?: string;
     prices?: Price[];
     attributes?: Attribute[];
     images?: Image[];
 }
-interface ItemShippingDetailsDraft {
+export interface ItemShippingDetailsDraft {
     targets: ItemShippingTargets[];
 }
-interface ItemShippingTargets {
+export interface ItemShippingTargets {
     addressKey: string;
     quantity: number;
 }
-export {};
