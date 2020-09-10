@@ -1,6 +1,6 @@
 {
   "name": "simple-commercetools",
-  "version": "0.14.3",
+  "version": "0.14.4",
   "description": "Abstraction layer for working with Commercetools projects in a simpler manner.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/DerKobe/simple-commercetools#readme",
   "devDependencies": {
-    "@types/node": "^14.0.27",
+    "@types/node": "^14.6.4",
     "backend-tslint-rules": "1.14.0",
     "rimraf": "^3.0.2",
     "tslint": "^6.1.3",
@@ -30,10 +30,10 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "@commercetools/api-request-builder": "^5.6.2",
+    "@commercetools/api-request-builder": "^5.6.3",
     "@commercetools/sdk-client": "^2.1.2",
     "@commercetools/sdk-middleware-auth": "^6.1.4",
-    "@commercetools/sdk-middleware-http": "^6.0.7",
+    "@commercetools/sdk-middleware-http": "^6.0.8",
     "@commercetools/sdk-middleware-queue": "^2.1.4",
     "isomorphic-fetch": "^2.2.1"
   }
