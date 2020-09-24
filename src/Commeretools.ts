@@ -5,16 +5,7 @@ import { createAuthMiddlewareForClientCredentialsFlow } from '@commercetools/sdk
 import { createHttpMiddleware } from '@commercetools/sdk-middleware-http';
 import { createQueueMiddleware } from '@commercetools/sdk-middleware-queue';
 import * as modules from './Modules/index';
-
-interface CommercetoolsConfig {
-  projectKey: string,
-  clientId: string,
-  clientSecret: string,
-  locale: string,
-  concurrency: number,
-  authHost: string,
-  apiHost: string,
-}
+import { CommercetoolsConfig } from './types'
 
 export class Commercetools {
   public get carts(): modules.Carts { return this.initModule('Carts') }

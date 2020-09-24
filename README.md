@@ -1,29 +1,18 @@
 ```typescript
-import { Commercetools } from 'simple-commercetools';
+import {  Commercetools, CommercetoolsConfig, PagedQueryResult } from 'simple-commercetools';
 
-interface CommercetoolsConfig {
-  projectKey: string,
-  clientId: string,
-  clientSecret: string,
-  locale: string,
-  concurrency: number,
-  authHost: string,
-  apiHost: string,
+const config: CommercetoolsConfig = {
+  projectKey: '[PROJECTKEY]',
+  clientId: '[CLIENTID]',
+  clientSecret: '[CLIENTSECRET]',
+  locale: 'de-DE',
+  concurrency: 5,
+  authHost: "https://auth.sphere.io",
+  apiHost: "https://api.sphere.io",
 }
-const config: CommercetoolsConfig = { ... }
 
 const commercetools = new Commercetools(config);
+await commercetools.initClient();
 
-interface PagedQueryResult {
-  offset: number;
-  limit: number;
-  count: number;
-  total?: number;
-  results: any[];
-  meta?: any;
-}
-
-commercetools.orders.fetchAll(1, 10).then((data: PagedQueryResult<Order>) => {
-  console.info(data);
-});
+const data: PagedQueryResult<Order> = await commercetools.orders.fetchAll(1, 10);
 ```

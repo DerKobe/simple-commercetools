@@ -1,14 +1,6 @@
 import 'isomorphic-fetch';
 import * as modules from './Modules/index';
-interface CommercetoolsConfig {
-    projectKey: string;
-    clientId: string;
-    clientSecret: string;
-    locale: string;
-    concurrency: number;
-    authHost: string;
-    apiHost: string;
-}
+import { CommercetoolsConfig } from './types';
 export declare class Commercetools {
     get carts(): modules.Carts;
     get categories(): modules.Categories;
@@ -48,4 +40,3 @@ export declare class Commercetools {
     initClient(): Promise<any>;
     private initModule;
 }
-export {};

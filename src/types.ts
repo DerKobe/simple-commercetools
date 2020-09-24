@@ -1,3 +1,13 @@
+export interface CommercetoolsConfig {
+  projectKey: string,
+  clientId: string,
+  clientSecret: string,
+  locale: string,
+  concurrency: number,
+  authHost: string,
+  apiHost: string,
+}
+
 export interface Entity {
   id: string;
   key?: string;
