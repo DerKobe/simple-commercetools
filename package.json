@@ -35,6 +35,6 @@
     "@commercetools/sdk-middleware-auth": "^6.1.4",
     "@commercetools/sdk-middleware-http": "^6.0.8",
     "@commercetools/sdk-middleware-queue": "^2.1.4",
-    "isomorphic-fetch": "^3.0.0"
+    "node-fetch": "^2.6.1"
   }
 }

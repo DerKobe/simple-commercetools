@@ -1,4 +1,4 @@
-import 'isomorphic-fetch';
+import fetch from 'node-fetch';
 import { createRequestBuilder } from '@commercetools/api-request-builder';
 import { createClient } from '@commercetools/sdk-client';
 import { createAuthMiddlewareForClientCredentialsFlow } from '@commercetools/sdk-middleware-auth';
