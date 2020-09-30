@@ -1,4 +1,3 @@
-import 'isomorphic-fetch';
 import * as modules from './Modules/index';
 import { CommercetoolsConfig } from './types';
 export declare class Commercetools {
