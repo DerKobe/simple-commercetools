@@ -100,11 +100,17 @@ export abstract class CommonModule<T extends Entity, Draft extends any> extends 
     return this.client.execute(createRequest);
   }
 
-  public async deleteById(id: string): Promise<void> {
+  public async deleteById(id: string, withFullDataErasure = false): Promise<void> {
     const entry = await this.fetchById(id);
 
+    let uri = this.request[this.entityType as string].byId(id).withVersion(entry.version)
+
+    if (withFullDataErasure) {
+      uri = uri.withFullDataErasure()
+    }
+
     const deleteRequest = {
-      uri: this.request[this.entityType as string].byId(id).withVersion(entry.version).build(),
+      uri: uri.build(),
       method: 'DELETE',
       headers: this.headers,
     };

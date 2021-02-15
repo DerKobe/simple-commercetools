@@ -57,9 +57,15 @@ export class CustomObjects extends BaseModule {
     );
   }
 
-  public async deleteById(id: string): Promise<void> {
+  public async deleteById(id: string, withFullDataErasure = false): Promise<void> {
+    let uri = this.request.customObjects.byId(id)
+
+    if (withFullDataErasure) {
+      uri = uri.withFullDataErasure()
+    }
+
     const deleteRequest = {
-      uri: this.request.customObjects.byId(id).build(),
+      uri: uri.build(),
       method: 'DELETE',
       headers: this.headers,
     };
