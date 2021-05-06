@@ -23,15 +23,15 @@ export class ProductProjections extends BaseModule {
   }
 
   public search(searchTerm: string, locale: string, filter?: Array<{ key: string, value: string }>): Promise<PagedQueryResult<any>> { // TODO define ProductProjection interface
-    return this.searchLike('text', searchTerm, locale, filter);
+    return this.searchLike('Search', searchTerm, locale, filter);
   }
 
   public suggest(searchTerm: string, locale: string, filter?: Array<{ key: string, value: string }>): Promise<PagedQueryResult<any>> { // TODO define ProductProjection interface
-    return this.searchLike('suggest', searchTerm, locale, filter);
+    return this.searchLike('Suggest', searchTerm, locale, filter);
   }
 
-  private async searchLike(method: 'text'|'suggest', searchTerm: string, locale: string, filter?: Array<{ key: string, value: string }>): Promise<PagedQueryResult<any>> { // TODO define ProductProjection interface
-    const uri = this.request.productProjectionsSearch.markMatchingVariants()[method](searchTerm, locale);
+  private async searchLike(kind: 'Search'|'Suggest', searchTerm: string, locale: string, filter?: Array<{ key: string, value: string }>): Promise<PagedQueryResult<any>> { // TODO define ProductProjection interface
+    const uri = this.request[`productProjections${kind}`].markMatchingVariants().text(searchTerm, locale);
 
     if (filter) {
       // tslint:disable-next-line:prefer-for-of
