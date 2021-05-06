@@ -22,10 +22,19 @@ export class ProductProjections extends BaseModule {
     );
   }
 
-  public async search(searchTerm: string, locale: string, filter?: Array<{ key: string, value: string }>): Promise<PagedQueryResult<any>> { // TODO define ProductProjection interface
-    const uri = this.request.productProjectionsSearch.markMatchingVariants().text(searchTerm, locale);
+  public search(searchTerm: string, locale: string, filter?: Array<{ key: string, value: string }>): Promise<PagedQueryResult<any>> { // TODO define ProductProjection interface
+    return this.searchLike('text', searchTerm, locale, filter);
+  }
+
+  public suggest(searchTerm: string, locale: string, filter?: Array<{ key: string, value: string }>): Promise<PagedQueryResult<any>> { // TODO define ProductProjection interface
+    return this.searchLike('suggest', searchTerm, locale, filter);
+  }
+
+  private async searchLike(method: 'text'|'suggest', searchTerm: string, locale: string, filter?: Array<{ key: string, value: string }>): Promise<PagedQueryResult<any>> { // TODO define ProductProjection interface
+    const uri = this.request.productProjectionsSearch.markMatchingVariants()[method](searchTerm, locale);
 
     if (filter) {
+      // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < filter.length; i++) {
         if (filter[i].key === 'productType') {
           const fetchProductTypeRequest = {
