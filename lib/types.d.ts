@@ -854,7 +854,7 @@ export interface LineItem {
     state: Array<ItemState>;
     taxRate?: TaxRate;
     supplyChannel?: Reference;
-    distributionChannel: Reference;
+    distributionChannel?: Reference;
     discountedPricePerQuantity: Array<DiscountedLineItemPriceForQuantity>;
     priceMode: LineItemPriceMode;
     lineItemMode: LineItemMode;
