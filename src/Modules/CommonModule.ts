@@ -72,7 +72,7 @@ export abstract class CommonModule<T extends Entity, Draft extends any> extends 
     );
   }
 
-  public fetchExpandedById(id: string, expansions?: string[]): Promise<T> {
+  public fetchExpandedById(id: string, expansions?: Array<string>): Promise<T> {
     let uri = this.request[this.entityType as string].byId(id);
 
     if (expansions) {
@@ -88,11 +88,17 @@ export abstract class CommonModule<T extends Entity, Draft extends any> extends 
     return this.client.execute(fetchRequest).then(({ body }) => body);
   }
 
-  public async delete(keyOrEntity): Promise<void> {
+  public async delete(keyOrEntity, withFullDataErasure = false): Promise<void> {
     const { id, version } = await this.resolveKeyAndVersion(keyOrEntity, this.fetchByKey.bind(this));
 
+    let uri = this.request[this.entityType as string].byId(id).withVersion(version);
+
+    if (withFullDataErasure) {
+      uri = uri.withFullDataErasure()
+    }
+
     const createRequest = {
-      uri: this.request[this.entityType as string].byId(id).withVersion(version).build(),
+      uri: uri.build(),
       method: 'DELETE',
       headers: this.headers,
     };

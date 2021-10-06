@@ -32,13 +32,13 @@ export interface ProductDraft {
   productType: ResourceIdentifier;
   slug: LocalizedString;
   description?: LocalizedString;
-  categories?: ResourceIdentifier[];
+  categories?: Array<ResourceIdentifier>;
   categoryOrderHints?: CategoryOrderHints;
   metaTitle?: LocalizedString;
   metaDescription?: LocalizedString;
   metaKeywords?: LocalizedString;
   masterVariant?: ProductVariantDraft;
-  variants?: ProductVariantDraft[];
+  variants?: Array<ProductVariantDraft>;
   taxCategory?: ResourceIdentifier;
   searchKeywords?: SearchKeywords;
   state?: Reference;
@@ -48,28 +48,28 @@ export interface ProductDraft {
 export interface ProductVariantDraft {
   sku?: string;
   key?: string;
-  prices?: PriceDraft[];
-  images?: Image[];
-  assets?: AssetDraft[];
-  attributes?: Attribute[];
+  prices?: Array<PriceDraft>;
+  images?: Array<Image>;
+  assets?: Array<AssetDraft>;
+  attributes?: Array<Attribute>;
 }
 
 export interface Asset {
   id: string;
   key?: string;
-  sources: AssetSource[];
+  sources: Array<AssetSource>;
   name: LocalizedString;
   description?: LocalizedString;
-  tags?: string[];
+  tags?: Array<string>;
   custom?: CustomFields;
 }
 
 export interface AssetDraft {
   key?: string;
-  sources: AssetSource[];
+  sources: Array<AssetSource>;
   name: LocalizedString;
   description?: LocalizedString;
-  tags?: string[];
+  tags?: Array<string>;
   custom?: CustomFieldsDraft;
 }
 
@@ -92,7 +92,7 @@ export interface PriceDraft {
   channel?: ResourceIdentifier;
   validFrom?: DateTime;
   validUntil?: DateTime;
-  tiers?: PriceTier[];
+  tiers?: Array<PriceTier>;
   custom?: CustomFieldsDraft;
 }
 
@@ -114,7 +114,7 @@ export interface WhitespaceTokenizer {
 
 export interface CustomTokenizer {
   type: 'custom';
-  inputs: string[];
+  inputs: Array<string>;
 }
 
 export type CategoryOrderHints = any;
@@ -134,11 +134,13 @@ export interface ResourceIdentifierByKey {
 export interface KeyReference {
   typeId: string;
   key: string;
+  obj?: any;
 }
 
 export interface IdReference {
   typeId: string;
   id: string;
+  obj?: any;
 }
 
 export type Reference = KeyReference | IdReference;
@@ -152,22 +154,22 @@ export interface ProductCatalogData {
 
 export interface ProductData {
   name: LocalizedString;
-  categories: Reference[];
+  categories: Array<Reference>;
   description?: LocalizedString;
   slug: LocalizedString;
   masterVariant: ProductVariant;
-  variants: ProductVariant[];
+  variants: Array<ProductVariant>;
 }
 
 export interface ProductVariant {
   id: number;
   sku?: string;
   key?: string;
-  prices?: Price[];
-  attributes?: Attribute[];
+  prices?: Array<Price>;
+  attributes?: Array<Attribute>;
   price?: Price;
-  images?: Image[];
-  assets?: Asset[];
+  images?: Array<Image>;
+  assets?: Array<Asset>;
   availability?: ProductVariantAvailability;
   isMatchingVariant?: Boolean;
   scopedPrice?: ScopedPrice;
@@ -263,14 +265,14 @@ export interface ProductType {
   lastModifiedBy: LastModifiedBy;
   name: string;
   description: string;
-  attributes: AttributeDefinition[];
+  attributes: Array<AttributeDefinition>;
 }
 
 export interface ProductTypeDraft {
   name: string;
   key?: string;
   description: string;
-  attributes: AttributeDefinitionDraft[];
+  attributes: Array<AttributeDefinitionDraft>;
 }
 
 export type UpdateAction =
@@ -372,24 +374,24 @@ export interface AddLocalizedEnumValueUpdateAction {
 export interface RemoveEnumValuesUpdateAction {
   action: 'removeEnumValues';
   attributeName: string;
-  keys: string[];
+  keys: Array<string>;
 }
 
 export interface ChangeAttributeOrderByNameUpdateAction {
   action: 'changeAttributeOrderByName';
-  attributeNames: string[];
+  attributeNames: Array<string>;
 }
 
 export interface ChangePlainEnumValueOrderUpdateAction {
   action: 'changePlainEnumValueOrder';
   attributeName: string;
-  values: PlainEnumValue[];
+  values: Array<PlainEnumValue>;
 }
 
 export interface ChangeLocalizedEnumValueOrderUpdateAction {
   action: 'changeLocalizedEnumValueOrder';
   attributeName: string;
-  values: LocalizedEnumValue[];
+  values: Array<LocalizedEnumValue>;
 }
 
 export interface ChangeEnumKeyUpdateAction {
@@ -532,7 +534,7 @@ export interface ChangePriceUpdateAction {
 export interface SetPricesUpdateAction {
   action: 'setPrices';
   variantId: number | string;
-  prices: PriceDraft[];
+  prices: Array<PriceDraft>;
   staged?: boolean;
 }
 
@@ -610,7 +612,7 @@ export interface PagedQueryResult<T> {
   limit: number;
   count: number;
   total?: number;
-  results: T[];
+  results: Array<T>;
   // facets?: FacetResults;
   meta?: any;
 }
@@ -623,14 +625,14 @@ export interface TaxCategory {
   lastModifiedAt: DateTime;
   name: string;
   description?: string;
-  rates: TaxRate[];
+  rates: Array<TaxRate>;
 }
 
 export interface TaxCategoryDraft {
   name: string;
   key?: string;
   description?: string;
-  rates: TaxRateDraft[];
+  rates: Array<TaxRateDraft>;
 }
 
 export interface TaxRateDraft {
@@ -639,7 +641,7 @@ export interface TaxRateDraft {
   includedInPrice: boolean;
   country: string;
   state?: string;
-  subRates?: SubRate[];
+  subRates?: Array<SubRate>;
 }
 
 export interface SubRate {
@@ -702,7 +704,7 @@ export interface Channel {
   createdAt: DateTime;
   lastModifiedAt: DateTime;
   key: string; // unique within the project | Any arbitrary string key that uniquely identifies this channel within the project.
-  roles: ChannelRole[]; // The roles of this channel. Each channel must have at least one role.
+  roles: Array<ChannelRole>; // The roles of this channel. Each channel must have at least one role.
   name?: LocalizedString; // A human-readable name of the channel.
   description?: LocalizedString; // A human-readable description of the channel.
   address?: Address; // The address where this channel is located (e.g. if the channel is a physical store).
@@ -712,7 +714,7 @@ export interface Channel {
 
 export interface ChannelDraft {
   key: string;
-  roles?: ChannelRole[]; // If not specified, then channel will get InventorySupply role by default
+  roles?: Array<ChannelRole>; // If not specified, then channel will get InventorySupply role by default
   name?: LocalizedString;
   description?: LocalizedString;
   address?: Address;
@@ -774,7 +776,7 @@ export interface Category {
   name: LocalizedString;
   slug: LocalizedString;
   description?: LocalizedString;
-  ancestors: Reference[];
+  ancestors: Array<Reference>;
   parent?: Reference;
   orderHint: string;
   externalId?: string;
@@ -782,7 +784,7 @@ export interface Category {
   metaDescription?: LocalizedString;
   metaKeywords?: LocalizedString;
   custom?: CustomFields;
-  assets?: Asset[];
+  assets?: Array<Asset>;
 }
 
 export interface CreatedBy {
@@ -803,8 +805,8 @@ export interface CustomTypeDraft {
   key: string;
   name: LocalizedString;
   description?: LocalizedString;
-  resourceTypeIds: string[];
-  fieldDefinitions?: FieldDefinition[];
+  resourceTypeIds: Array<string>;
+  fieldDefinitions?: Array<FieldDefinition>;
 }
 
 export interface CustomType {
@@ -817,8 +819,8 @@ export interface CustomType {
   lastModifiedBy: LastModifiedBy;
   name: LocalizedString;
   description?: LocalizedString;
-  resourceTypeIds: string[];
-  fieldDefinitions: FieldDefinition[];
+  resourceTypeIds: Array<string>;
+  fieldDefinitions: Array<FieldDefinition>;
 }
 
 export interface FieldDefinition {
@@ -831,7 +833,7 @@ export interface FieldDefinition {
 
 export interface FieldType {
   name: string;
-  values?: any[];
+  values?: Array<any>;
   elementType?: FieldType;
   referenceTypeId?: 'cart' | 'category' | 'channel' | 'customer' | 'key-value-document' | 'order' | 'product' | 'product-type' | 'review' | 'state' | 'shipping-method' | 'zone';
 }
@@ -850,14 +852,14 @@ export interface Extension {
   lastModifiedAt: DateTime;
   lastModifiedBy: LastModifiedBy;
   destination: Destination;
-  triggers: Trigger[];
+  triggers: Array<Trigger>;
   timeoutInMs?: number;
 }
 
 export interface ExtensionDraft {
   key?: string;
   destination: Destination;
-  triggers: Trigger[];
+  triggers: Array<Trigger>;
   timeoutInMs?: number;
 }
 
@@ -895,14 +897,14 @@ export interface AzureFunctionsAuthentication {
 
 export interface Trigger {
   resourceTypeId: 'cart' | 'order' | 'payment' | 'customer';
-  actions: ('Create' | 'Update')[];
+  actions: Array<'Create' | 'Update'>;
 }
 
 export interface SubscriptionDraft {
   key?: string;
   destination: Destination;
-  messages?: MessageSubscription[];
-  changes?: ChangeSubscription[];
+  messages?: Array<MessageSubscription>;
+  changes?: Array<ChangeSubscription>;
   format?: Format;
 }
 
@@ -915,15 +917,15 @@ export interface Subscription {
   lastModifiedAt: DateTime;
   lastModifiedBy: LastModifiedBy;
   destination: Destination;
-  messages: MessageSubscription[];
-  changes: ChangeSubscription[];
+  messages: Array<MessageSubscription>;
+  changes: Array<ChangeSubscription>;
   format: Format;
   status: SubscriptionHealthStatus;
 }
 
 export interface MessageSubscription {
   resourceTypeId: string;
-  types?: string[];
+  types?: Array<string>;
 }
 
 export interface ChangeSubscription {
@@ -964,7 +966,7 @@ export interface ChangeOrderStateAction {
   orderState: OrderState;
 }
 
-export type Sort = SortStatement[];
+export type Sort = Array<SortStatement>;
 
 export interface SortStatement {
   by: string;
@@ -984,8 +986,8 @@ export interface Order {
   customerEmail?: string;
   anonymousId?: string;
   store?: KeyReference;
-  lineItems: LineItem[];
-  customLineItems: CustomLineItem[];
+  lineItems: Array<LineItem>;
+  customLineItems: Array<CustomLineItem>;
   totalPrice: Money;
   taxedPrice?: TaxedPrice;
   shippingAddress?: Address;
@@ -1002,8 +1004,8 @@ export interface Order {
   shippingInfo?: ShippingInfo;
   syncInfo: Set<SyncInfo>;
   returnInfo: Set<ReturnInfo>;
-  discountCodes: DiscountCodeInfo[];
-  refusedGifts: Reference[];
+  discountCodes: Array<DiscountCodeInfo>;
+  refusedGifts: Array<Reference>;
   lastMessageSequenceNumber: number;
   cart?: Reference;
   custom?: CustomFields;
@@ -1012,7 +1014,7 @@ export interface Order {
   inventoryMode: InventoryMode;
   shippingRateInput?: ShippingRateInput;
   origin: CartOrigin;
-  itemShippingAddresses: Address[];
+  itemShippingAddresses: Array<Address>;
 }
 
 export interface LineItem {
@@ -1026,11 +1028,11 @@ export interface LineItem {
   taxedPrice?: TaxedItemPrice;
   totalPrice: Money
   quantity: Number
-  state: ItemState[];
+  state: Array<ItemState>;
   taxRate?: TaxRate;
   supplyChannel?: Reference;
   distributionChannel: Reference;
-  discountedPricePerQuantity: DiscountedLineItemPriceForQuantity[];
+  discountedPricePerQuantity: Array<DiscountedLineItemPriceForQuantity>;
   priceMode: LineItemPriceMode;
   lineItemMode: LineItemMode;
   custom?: CustomFields;
@@ -1045,10 +1047,10 @@ export interface CustomLineItem {
   totalPrice: Money;
   slug: string;
   quantity: Number;
-  state: ItemState[];
+  state: Array<ItemState>;
   taxCategory?: Reference;
   taxRate?: TaxRate;
-  discountedPricePerQuantit: DiscountedLineItemPriceForQuantity[];
+  discountedPricePerQuantit: Array<DiscountedLineItemPriceForQuantity>;
   custom?: CustomFields;
   shippingDetails?: ItemShippingDetails;
 }
@@ -1063,7 +1065,7 @@ export enum TaxMode {
 export interface TaxedPrice {
   totalNet: Money;
   totalGross: Money;
-  taxPortions: TaxPortion[];
+  taxPortions: Array<TaxPortion>;
 }
 
 export interface TaxPortion {
@@ -1108,12 +1110,12 @@ export interface ShippingInfo {
   taxRate?: TaxRate;
   taxCategory?: Reference;
   shippingMethod?: Reference;
-  deliveries: Delivery[];
+  deliveries: Array<Delivery>;
   discountedPrice?: DiscountedLineItemPrice;
   shippingMethodState: ShippingMethodState;
 }
 
-export type Set<T> = T[];
+export type Set<T> = Array<T>;
 
 export interface SyncInfo {
   channel: Reference;
@@ -1122,7 +1124,7 @@ export interface SyncInfo {
 }
 
 export interface ReturnInfo {
-  items: ReturnItem[];
+  items: Array<ReturnItem>;
   returnTrackingId: string;
   returnDate: DateTime;
 }
@@ -1133,7 +1135,7 @@ export interface DiscountCodeInfo {
 }
 
 export interface PaymentInfo {
-  payments: Reference[]; // to Payments
+  payments: Array<Reference>; // to Payments
 }
 
 export enum InventoryMode {
@@ -1186,28 +1188,28 @@ export enum LineItemMode {
 }
 
 export interface ItemShippingDetails {
-  targets: ItemShippingTarget[];
+  targets: Array<ItemShippingTarget>;
   valid: boolean;
 }
 
 export interface ShippingRate {
   price: Money;
   freeAbove?: Money;
-  tiers: ShippingRatePriceTier[];
+  tiers: Array<ShippingRatePriceTier>;
   isMatching: boolean;
 }
 
 export interface Delivery {
 id: string;
 createdAt: DateTime;
-items: DeliveryItem[];
-parcels: Parcel[];
+items: Array<DeliveryItem>;
+parcels: Array<Parcel>;
 address?: Address;
 }
 
 export interface DiscountedLineItemPrice {
   value: BaseMoney;
-  includedDiscounts: DiscountedLineItemPortion[];
+  includedDiscounts: Array<DiscountedLineItemPortion>;
 }
 
 export interface DiscountedLineItemPortion {
@@ -1341,8 +1343,8 @@ export interface OrderImportDraft {
   customerId: string;
   customerEmail?: string;
   store?: KeyReference;
-  lineItems?: LineItemImportDraft[];
-  customLineItems?: CustomLineItem[];
+  lineItems?: Array<LineItemImportDraft>;
+  customLineItems?: Array<CustomLineItem>;
   totalPrice: Money;
   taxedPrice?: TaxedPrice;
   shippingAddress?:Address;
@@ -1359,7 +1361,7 @@ export interface OrderImportDraft {
   taxRoundingMode?: RoundingMode;
   taxCalculationMode?: TaxCalculationMode;
   origin?: CartOrigin;
-  itemShippingAddresses?: Address[];
+  itemShippingAddresses?: Array<Address>;
 }
 
 export interface LineItemImportDraft {
@@ -1368,7 +1370,7 @@ export interface LineItemImportDraft {
   variant: ProductVariantImportDraft;
   price: Price;
   quantity: number;
-  state?: ItemState[];
+  state?: Array<ItemState>;
   supplyChannel?: ResourceIdentifier;
   distributionChannel?: ResourceIdentifier;
   taxRate?: TaxRate;
@@ -1383,7 +1385,7 @@ export interface ShippingInfoImportDraft {
   taxRate?: TaxRate;
   taxCategory?: ResourceIdentifier;
   shippingMethod?: ResourceIdentifier;
-  deliveries: Delivery[];
+  deliveries: Array<Delivery>;
   discountedPrice?: DiscountedLineItemPrice;
   shippingMethodState: ShippingMethodState;
 }
@@ -1391,13 +1393,13 @@ export interface ShippingInfoImportDraft {
 export interface ProductVariantImportDraft {
   id?: number;
   sku?: string;
-  prices?: Price[];
-  attributes?: Attribute[];
-  images?: Image[];
+  prices?: Array<Price>;
+  attributes?: Array<Attribute>;
+  images?: Array<Image>;
 }
 
 export interface ItemShippingDetailsDraft {
-  targets: ItemShippingTargets[];
+  targets: Array<ItemShippingTargets>;
 }
 
 export interface ItemShippingTargets {

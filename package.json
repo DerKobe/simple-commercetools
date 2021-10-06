@@ -22,12 +22,12 @@
   },
   "homepage": "https://github.com/DerKobe/simple-commercetools#readme",
   "devDependencies": {
-    "@types/node": "^15.0.2",
+    "@types/node": "^16.10.3",
     "backend-tslint-rules": "1.14.0",
     "rimraf": "^3.0.2",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^4.2.4"
+    "typescript": "^4.4.3"
   },
   "dependencies": {
     "@commercetools/api-request-builder": "^5.6.3",
@@ -35,6 +35,6 @@
     "@commercetools/sdk-middleware-auth": "^6.1.4",
     "@commercetools/sdk-middleware-http": "^6.0.11",
     "@commercetools/sdk-middleware-queue": "^2.1.4",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.5"
   }
 }
