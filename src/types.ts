@@ -1178,13 +1178,14 @@ discountedPrice: DiscountedLineItemPrice;
 }
 
 export enum LineItemPriceMode {
-  Standard = 'Standard',
-  GiftLineItem = 'GiftLineItem'
+  Platform = 'Platform',
+  ExternalPrice = 'ExternalPrice',
+  ExternalTotal = 'ExternalTotal',
 }
 
 export enum LineItemMode {
   Standard = 'Standard',
-  GiftLineItem = 'GiftLineItem'
+  GiftLineItem = 'GiftLineItem',
 }
 
 export interface ItemShippingDetails {

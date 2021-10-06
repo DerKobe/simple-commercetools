@@ -978,8 +978,9 @@ export interface DiscountedLineItemPriceForQuantity {
     discountedPrice: DiscountedLineItemPrice;
 }
 export declare enum LineItemPriceMode {
-    Standard = "Standard",
-    GiftLineItem = "GiftLineItem"
+    Platform = "Platform",
+    ExternalPrice = "ExternalPrice",
+    ExternalTotal = "ExternalTotal"
 }
 export declare enum LineItemMode {
     Standard = "Standard",
