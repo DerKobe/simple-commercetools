@@ -50,7 +50,7 @@ export abstract class CommonModule<T extends Entity, Draft extends any> extends 
     return this.client.execute(fetchRequest).then(({ body }) => body);
   }
 
-  public async fetchAllExpanded(page?: number, perPage?: number, condition?: string, expansions?: string[], sort?: Sort): Promise<PagedQueryResult<T>> {
+  public async fetchAllExpanded(page?: number, perPage?: number, condition?: string, expansions?: Array<string>, sort?: Sort): Promise<PagedQueryResult<T>> {
     let uri = this.request[this.entityType as string];
 
     if (page) { uri = uri.page(page); }
@@ -139,7 +139,7 @@ export abstract class CommonModule<T extends Entity, Draft extends any> extends 
     );
   }
 
-  public async updateByIdAndVersion(id: string, version: number, actions: UpdateAction[]): Promise<T> {
+  public async updateByIdAndVersion(id: string, version: number, actions: Array<UpdateAction>): Promise<T> {
     const updateRequest = {
       uri: this.request[this.entityType as string].byId(id).build(),
       method: 'POST',
@@ -150,12 +150,12 @@ export abstract class CommonModule<T extends Entity, Draft extends any> extends 
     return this.client.execute(updateRequest);
   }
 
-  public async updateByIdOnly(id: string, actions: UpdateAction[]): Promise<T> {
+  public async updateByIdOnly(id: string, actions: Array<UpdateAction>): Promise<T> {
     const entry = await this.fetchById(id);
     return this.updateByIdAndVersion(id, entry.version, actions)
   }
 
-  public async updateByKeyOnly(key: string, actions: UpdateAction[]): Promise<T> {
+  public async updateByKeyOnly(key: string, actions: Array<UpdateAction>): Promise<T> {
     const { id, version } = await this.resolveKeyAndVersion(key, this.fetchByKey.bind(this));
     return this.updateByIdAndVersion(id, version, actions)
   }

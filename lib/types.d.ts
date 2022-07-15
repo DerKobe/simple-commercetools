@@ -1176,3 +1176,26 @@ export interface ItemShippingTargets {
     addressKey: string;
     quantity: number;
 }
+export interface ProductProjection {
+    id: string;
+    key?: string;
+    version: number;
+    createdAt: DateTime;
+    lastModifiedAt: DateTime;
+    productType: ResourceIdentifier;
+    name: LocalizedString;
+    description?: LocalizedString;
+    slug: LocalizedString;
+    categories: Array<ResourceIdentifier>;
+    metaTitle?: LocalizedString;
+    metaDescription?: LocalizedString;
+    metaKeywords?: LocalizedString;
+    searchKeywords: SearchKeywords;
+    hasStagedChanges: boolean;
+    published: boolean;
+    masterVariant: ProductVariant;
+    variants: Array<ProductVariant>;
+    taxCategory?: ResourceIdentifier;
+    state?: ResourceIdentifier;
+    reviewRatingStatistics?: ReviewRatingStatistics;
+}
